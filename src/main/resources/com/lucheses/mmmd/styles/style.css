@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3/mai/2020, 21:53:07
+    Author     : lucheses
+*/
+
+.programa {
+    -fx-effect: dropshadow(three-pass-box, derive(cadetblue, -20%), 10, 0, 4, 4); 
+    -fx-background-color: derive(cadetblue, -20%); 
+    -fx-background-insets: 12; 
+    -fx-background-radius: 6;
+}
+
+.sidebar {
+    -fx-background-color: #d62828;
+}
+
+.esqueceuBtn, .novaContaBtn {
+    -fx-text-fill: #003049;
+}
+
+.novaContaBtn {
+    -fx-text-fill: #d62828;
+}
+
+.esqueceuBtn:hover, .novaContaBtn:hover {
+    -fx-text-fill: #d62828;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.loginBtn {
+    -fx-background-color: #d62828;
+    -fx-background-radius: 3px;
+    -fx-text-fill: #fff;
+}
+
+.loginBtn:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d62828;
+    -fx-border-color: #d62828;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-cursor: hand;
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+}
+
+.closeBtn {
+    -fx-fill: #003049;
+}
+
+.closeBtn:hover {
+    -fx-cursor: hand;
+    -fx-fill: #fcbf49;
+}
