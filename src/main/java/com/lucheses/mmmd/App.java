@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import javafx.stage.StageStyle;
 
@@ -16,20 +15,20 @@ public class App extends Application {
 
     private static Scene scene;
     public static Stage stage = null;
-    
+
     private double xOffset;
     private double yOffset;
-    
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("fxml/LoginUI"));
-        
+
         scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
-        
+
         App.stage = stage;
-        
+
         stage.show();
     }
 

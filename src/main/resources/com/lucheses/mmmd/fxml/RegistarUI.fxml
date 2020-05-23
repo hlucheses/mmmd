@@ -37,6 +37,11 @@
                 <Font name="Ebrima" size="14.0" />
             </font>
         </JFXPasswordField>
+        <JFXPasswordField fx:id="confirmPasswordTxt" focusColor="#d62828" labelFloat="true" layoutX="44.0" layoutY="338.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="255.0" promptText="Confirmar Password" unFocusColor="#003049">
+            <font>
+                <Font name="Ebrima" size="14.0" />
+            </font>
+        </JFXPasswordField>
         <JFXButton fx:id="iniciarBtn" buttonType="RAISED" layoutX="51.0" layoutY="420.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#registar" prefHeight="50.0" prefWidth="300.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Iniciar!" />
         <Label layoutX="66.0" layoutY="554.0" stylesheets="@../styles/style.css" text="Já tem conta?" textFill="#003049">
             <font>
@@ -49,11 +54,6 @@
             </font>
         </Label>
         <FontAwesomeIconView glyphName="CLOSE" layoutX="365.0" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
-        <JFXPasswordField fx:id="confirmPasswordTxt" focusColor="#d62828" labelFloat="true" layoutX="44.0" layoutY="338.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="255.0" promptText="Confirmar Password" unFocusColor="#003049">
-            <font>
-                <Font name="Ebrima" size="14.0" />
-            </font>
-        </JFXPasswordField>
         <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="8.0" layoutY="29.0" onMouseClicked="#voltarParaLogin" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
         <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="337.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />
     </children>
