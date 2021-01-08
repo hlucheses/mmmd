@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.radio-button {
+    -jfx-selected-color: #d62828;
+}
+
+.date-picker {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}

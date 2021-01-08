@@ -1,17 +1,22 @@
 package com.lucheses.mmmd.entidades;
 
+import com.lucheses.mmmd.conf.BaseDeDados;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -48,7 +53,7 @@ public class Utilizador extends Entidade {
     }
 
     public Utilizador(String email, String password) {
-        
+
         this.email = email.toLowerCase();
         this.password = encriptarPassword_SHA_512(password);
     }
@@ -71,5 +76,31 @@ public class Utilizador extends Entidade {
         }
 
         return passwordEncriptada;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public boolean estaDefinido() {
+        return this.isset;
+    }
+
+    public boolean verificarCredenciais() {
+
+        if (BaseDeDados.emailJaExiste(this.email)) {
+            Utilizador u = BaseDeDados.getUtilizadorByEmail(this.email);
+            if (u.password.equals(this.password)) {
+                return true;
+            }
+        }
+
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Aviso");
+        alert.setHeaderText("Ocorreu um erro ao tentar fazer login!");
+        alert.setContentText("Email ou password incorrectos!");
+        alert.showAndWait();
+        
+        return false;
     }
 }

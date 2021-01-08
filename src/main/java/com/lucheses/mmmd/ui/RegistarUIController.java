@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -71,7 +72,7 @@ public class RegistarUIController implements Initializable {
     }
 
     @FXML
-    private void registar(MouseEvent event) {
+    private void registar(MouseEvent event) throws IOException {
 
         String email = emailTxt.getText();
         String password = passwordTxt.getText();
@@ -80,6 +81,10 @@ public class RegistarUIController implements Initializable {
         if (validarEmail(email) && validarPassword(password, confirmPassword)) {
             Sessao.utilizador = new Utilizador(email, password);
             Sessao.utilizador.persistir();
+
+            App.novaJanela("fxml/NovoMembroUI");
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
         } else {
             passwordTxt.setText("");
             confirmPasswordTxt.setText("");

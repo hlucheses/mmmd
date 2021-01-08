@@ -8,14 +8,16 @@ package com.lucheses.mmmd.ui;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
+import com.lucheses.mmmd.conf.BaseDeDados;
+import com.lucheses.mmmd.entidades.Utilizador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -57,22 +59,19 @@ public class LoginUIController implements Initializable {
     @FXML
     private void login(MouseEvent event) throws IOException {
 
-        String email = emailTxt.getText();
-        String password = passwordTxt.getText();
-
-        if (validarUtilizador(email, password)) {
-
-            Scene scene = new Scene(App.loadFXML("fxml/NovoMembro"));
-            scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
-
-            App.stage.setScene(scene);
-            App.stage.show();
-
+        Utilizador u = new Utilizador(emailTxt.getText(), passwordTxt.getText());
+        
+        if (u.verificarCredenciais()) {
+            u = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
+            
+            if (u.estaDefinido()) {
+                
+            } else {
+                App.novaJanela("fxml/NovoMembroUI");
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            }
         }
     }
 
-    private static boolean validarUtilizador(String email, String password) {
-        
-        return false;
-    }
+    
 }

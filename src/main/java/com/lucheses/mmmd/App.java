@@ -1,11 +1,14 @@
 package com.lucheses.mmmd;
 
+import antlr.debug.Event;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 
 /**
@@ -13,7 +16,7 @@ import javafx.stage.StageStyle;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    public static Scene scene;
     public static Stage stage = null;
 
     private double xOffset;
@@ -39,6 +42,15 @@ public class App extends Application {
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static void novaJanela(String fxml) throws IOException {
+        stage = new Stage();
+        scene = new Scene(App.loadFXML(fxml));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
     public static void main(String[] args) {
