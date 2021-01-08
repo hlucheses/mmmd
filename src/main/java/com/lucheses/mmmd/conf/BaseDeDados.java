@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lucheses.mmmd.conf;
 
 import com.lucheses.mmmd.entidades.Utilizador;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -29,9 +23,9 @@ public final class BaseDeDados {
     private BaseDeDados() {
     }
 
-    public static void novoUtilizador(Utilizador utilizador) {
+    public static void persistir(Object o) {
         EM.getTransaction().begin();
-        EM.persist(utilizador);
+        EM.persist(o);
         EM.getTransaction().commit();
     }
 
@@ -39,5 +33,10 @@ public final class BaseDeDados {
         String sql = "SELECT COUNT(*) FROM Utilizador u WHERE u.email = :email";
         TypedQuery<Long> q = EM.createQuery(sql, Long.class);
         return q.setParameter("email", email).getSingleResult() > 0;
+    }
+    
+    public static boolean validarLogin(String email, String password) {
+        Utilizador u = new Utilizador(email, password);
+        return false;
     }
 }

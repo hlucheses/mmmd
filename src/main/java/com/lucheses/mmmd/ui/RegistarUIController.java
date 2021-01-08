@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
 import com.lucheses.mmmd.conf.BaseDeDados;
+import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.Utilizador;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class RegistarUIController implements Initializable {
 
     @FXML
     private void voltarParaLogin(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/zLoginUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/LoginUI.fxml"));
         App.stage.getScene().setRoot(root);
     }
 
@@ -77,13 +78,17 @@ public class RegistarUIController implements Initializable {
         String confirmPassword = confirmPasswordTxt.getText();
 
         if (validarEmail(email) && validarPassword(password, confirmPassword)) {
-            Utilizador utilizador = new Utilizador(email, password);
-            BaseDeDados.novoUtilizador(utilizador);
-            
+            Sessao.utilizador = new Utilizador(email, password);
+            Sessao.utilizador.persistir();
         } else {
             passwordTxt.setText("");
             confirmPasswordTxt.setText("");
         }
+    }
+
+    @FXML
+    private void abrirNovoMembroUI(MouseEvent event) {
+
     }
 
     private boolean validarEmail(String email) {
@@ -150,4 +155,5 @@ public class RegistarUIController implements Initializable {
 
         return passwordValida;
     }
+
 }

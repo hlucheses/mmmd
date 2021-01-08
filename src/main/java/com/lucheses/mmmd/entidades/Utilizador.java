@@ -1,6 +1,5 @@
 package com.lucheses.mmmd.entidades;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +23,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "utilizador", uniqueConstraints = {
     @UniqueConstraint(columnNames = "idutilizador"),
     @UniqueConstraint(columnNames = "email")})
-public class Utilizador implements Serializable {
+public class Utilizador extends Entidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +48,7 @@ public class Utilizador implements Serializable {
     }
 
     public Utilizador(String email, String password) {
+        
         this.email = email.toLowerCase();
         this.password = encriptarPassword_SHA_512(password);
     }

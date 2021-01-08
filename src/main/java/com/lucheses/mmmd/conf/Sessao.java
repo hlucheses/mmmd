@@ -12,5 +12,12 @@ import com.lucheses.mmmd.entidades.Utilizador;
  * @author lucheses
  */
 public class Sessao {
-    public static Utilizador utilizadorSessao;
+    public static Utilizador utilizador;
+    
+    static {
+        utilizador = null;
+    }
+    
+    private Sessao() {
+    }
 }
