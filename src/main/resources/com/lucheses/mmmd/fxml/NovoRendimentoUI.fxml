@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.NovoMembroUIController">
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.NovoAnimalUIController">
     <children>
-        <Label layoutX="133.0" layoutY="31.0" text="Dados do novo membro" textFill="#d62828">
+        <Label layoutX="133.0" layoutY="31.0" text="Dados do novo animal" textFill="#d62828">
             <font>
                 <Font name="Impact" size="24.0" />
             </font>
@@ -22,17 +22,17 @@
         <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
         <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
      
-        <JFXTextField fx:id="nomeDoMembroTxt" focusColor="#d62828" layoutX="133.0" layoutY="92.0" prefHeight="25.0" prefWidth="217.0" promptText="Nome do Membro">
+        <JFXTextField fx:id="nomeDoMembroTxt" focusColor="#d62828" layoutX="133.0" layoutY="92.0" prefHeight="25.0" prefWidth="217.0" promptText="Nome do Bicho">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXTextField>
-        <JFXTextField fx:id="nomeDaFamiliaTxt" focusColor="#d62828" layoutX="133.0" layoutY="157.0" prefHeight="25.0" prefWidth="217.0" promptText="Nome da Família">
+        <JFXTextField fx:id="nomeDaFamiliaTxt" focusColor="#d62828" layoutX="133.0" layoutY="157.0" prefHeight="25.0" prefWidth="217.0" promptText="Espécie">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXTextField>
-        <JFXTextField fx:id="telefoneTxt" focusColor="#d62828" layoutX="133.0" layoutY="224.0" prefHeight="25.0" prefWidth="217.0" promptText="Telefone">
+        <JFXTextField fx:id="telefoneTxt" focusColor="#d62828" layoutX="133.0" layoutY="224.0" prefHeight="25.0" prefWidth="217.0" promptText="Raça">
             <font>
                 <Font size="14.0" />
             </font>
@@ -44,12 +44,12 @@
             </font>
         </Label>
         <DatePicker fx:id="dataDeNascimentoDP" layoutX="411.0" layoutY="100.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Nascimento" styleClass="date-picker" stylesheets="@../styles/novomembroui.css" />
-        <Label layoutX="418.0" layoutY="164" text="Sexo">
+        <Label layoutX="418.0" layoutY="152.0" text="Sexo">
             <font>
                 <Font size="14.0" />
             </font>
         </Label> 
-        <JFXRadioButton fx:id="masculinoRBtn" layoutX="418.0" layoutY="192.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Masculino">
+        <JFXRadioButton fx:id="masculinoRBtn" layoutX="418.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Masculino">
             <font>
                 <Font size="14.0" />
             </font>
@@ -58,7 +58,7 @@
             </toggleGroup>
         </JFXRadioButton>
         
-        <JFXRadioButton fx:id="femininoRBtn" layoutX="523.0" layoutY="192.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Feminino">
+        <JFXRadioButton fx:id="femininoRBtn" layoutX="523.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Feminino">
             <font>
                 <Font size="14.0" />
             </font>
@@ -66,10 +66,15 @@
                 <fx:reference source="sexoToggle" />
             </toggleGroup>
         </JFXRadioButton>
-        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Continuar" />
+        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Continuar" />
         
         <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
-        <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="640.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />
+      <Label layoutX="420.0" layoutY="219.0" text="Data de aquisição">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dataDeAquisicaoDP" layoutX="419.0" layoutY="234.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Aquisição" styleClass="date-picker" stylesheets="@../styles/novomembroui.css" />
 
     </children>
 </AnchorPane>

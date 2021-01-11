@@ -69,6 +69,7 @@ public class RegistarUIController implements Initializable {
 
     @FXML
     private void minimizarPrograma(MouseEvent event) {
+        App.stage.setIconified(true);
     }
 
     @FXML
@@ -84,7 +85,6 @@ public class RegistarUIController implements Initializable {
 
             App.novaJanela("fxml/NovoMembroUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
-
         } else {
             passwordTxt.setText("");
             confirmPasswordTxt.setText("");

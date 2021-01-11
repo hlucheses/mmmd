@@ -5,6 +5,9 @@
  */
 package com.lucheses.mmmd.conf;
 
+import com.lucheses.mmmd.entidades.Familia;
+import com.lucheses.mmmd.entidades.Membro;
+import com.lucheses.mmmd.entidades.MembroHumano;
 import com.lucheses.mmmd.entidades.Utilizador;
 
 /**
@@ -13,9 +16,14 @@ import com.lucheses.mmmd.entidades.Utilizador;
  */
 public class Sessao {
     public static Utilizador utilizador;
+    public static MembroHumano membroHumano;
+    public static Membro membro;
+    public static Familia familia;
     
     static {
         utilizador = null;
+        membroHumano = null;
+        familia = null;
     }
     
     private Sessao() {

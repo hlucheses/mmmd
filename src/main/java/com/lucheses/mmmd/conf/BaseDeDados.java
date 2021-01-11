@@ -48,4 +48,10 @@ public final class BaseDeDados {
         TypedQuery<Long> q = EM.createQuery(sql, Long.class);
         return q.setParameter("email", email).getSingleResult() > 0;
     }
+    
+    public static boolean haFamilias() {
+        String sql = "SELECT COUNT(*) FROM Familia f";
+        TypedQuery<Long> q = EM.createQuery(sql, Long.class);
+        return q.getSingleResult() > 0;
+    }
 }

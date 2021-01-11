@@ -8,7 +8,7 @@ package com.lucheses.mmmd.ui;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
-import com.lucheses.mmmd.conf.BaseDeDados;
+import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.Utilizador;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -28,6 +29,8 @@ import javafx.scene.layout.Pane;
 public class LoginUIController implements Initializable {
 
     @FXML
+    private AnchorPane parent;
+    @FXML
     private Pane contentArea;
     @FXML
     private JFXTextField emailTxt;
@@ -36,7 +39,7 @@ public class LoginUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        App.tornarArrastavel(parent);
     }
 
     @FXML
@@ -54,22 +57,24 @@ public class LoginUIController implements Initializable {
 
     @FXML
     private void minimizarPrograma(MouseEvent event) {
+        App.stage.setIconified(true);
     }
 
     @FXML
     private void login(MouseEvent event) throws IOException {
 
         Utilizador u = new Utilizador(emailTxt.getText(), passwordTxt.getText());
+        Sessao.utilizador = u;
         
         if (u.verificarCredenciais()) {
-            u = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
+            //u = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
             
-            if (u.estaDefinido()) {
+            //if (u.estaDefinido()) {
                 
-            } else {
+            //} else {
                 App.novaJanela("fxml/NovoMembroUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
-            }
+            //}
         }
     }
 

@@ -9,14 +9,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Query;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
 import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,9 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
  * @author lucheses
  */
 @Entity
-@Table(name = "utilizador", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "idutilizador"),
-    @UniqueConstraint(columnNames = "email")})
+@Table(name = "utilizador")
 public class Utilizador extends Entidade {
 
     @Id

@@ -1,0 +1,23 @@
+.button3
+{
+    -fx-background-color : #ffffff;
+    -fx-text-fill: #003049;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+.button3:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-cursor: hand;
+}
+
+.button3:pressed {
+    -fx-background-color : #d62828;
+    -fx-text-fill : #fff;
+}
+
+.dadosUser {
+    -fx-background-color: #003049;
+    -fx-background-radius: 10;
+}

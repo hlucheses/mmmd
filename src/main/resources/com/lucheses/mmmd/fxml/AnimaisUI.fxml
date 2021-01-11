@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contentArea" stylesheets="@../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.AnimaisUIController">
+    <children>
+        <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../styles/fullpackstyling.css">
+         <children>
+            <ImageView fitHeight="252.0" fitWidth="286.0" layoutX="14.0" layoutY="67.0">
+               <image>
+                  <Image url="@../img/TigerHead.png" />
+               </image>
+            </ImageView>
+         </children>
+        </Pane>
+        <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
+          <Label layoutX="106.0" layoutY="40.0" text="Lista de animais da família" textFill="#003049">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </Label>
+          <Label alignment="CENTER" layoutX="106.0" layoutY="77.0" prefWidth="265.0" text="Aqui aparece o nome e a espécie de cada animal" textFill="#9a9292" wrapText="true">
+              <font>
+                  <Font size="13.0" />
+              </font>
+          </Label>
+      <JFXButton onMouseClicked="#novoAnimal" buttonType="RAISED" layoutX="134.0" layoutY="373.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Animal" />
+    </children>
+</AnchorPane>
