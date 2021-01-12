@@ -1,5 +1,6 @@
 package com.lucheses.mmmd.entidades;
 
+import com.lucheses.mmmd.conf.Entidade;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 /**
  *
@@ -55,10 +55,30 @@ public class Familia extends Entidade {
     }
 
     public boolean estaDefinida() {
-        return this != null;
+        return this.getNome() != null;
     }
     
     public String getNome() {
         return this.nome;
+    }
+    
+    public String getTelefone() {
+        return this.telefoneDeCasa;
+    }
+    
+    public long getId() {
+        return this.id;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public String getEndereco() {
+        return this.endereco;
+    }
+    
+    public String getBairro() {
+        return this.bairro;
     }
 }

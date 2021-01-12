@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.registo.EscolherFamiliaUIController">
+    <children>
+        <Label layoutX="133.0" layoutY="31.0" text="Escolher Família" textFill="#d62828">
+            <font>
+                <Font name="Impact" size="24.0" />
+            </font>
+        </Label>
+        <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
+        <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
+        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#entrarNaFamilia" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Seleccionar família" />
+        <JFXButton buttonType="RAISED" layoutX="133.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#voltar" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Voltar" />
+
+        <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+        <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="640.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />
+      <JFXComboBox promptText="Seleccionar uma família" fx:id="seleccionarFamiliaCombo" layoutX="148.0" layoutY="183.0" prefHeight="26.0" prefWidth="367.0" />
+      <JFXButton buttonType="RAISED" layoutX="533.0" layoutY="185.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verDados" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Ver dados" />
+      <JFXButton buttonType="RAISED" layoutX="533.0" layoutY="81.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#entrarNaFamilia" prefHeight="24.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Nova família" />
+    </children>
+</AnchorPane>

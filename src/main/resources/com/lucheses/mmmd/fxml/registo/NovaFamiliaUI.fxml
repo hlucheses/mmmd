@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../styles/style.css" fx:controller="com.lucheses.mmmd.ui.NovaFamiliaUIController">
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../styles/style.css" fx:controller="com.lucheses.mmmd.ui.registo.NovaFamiliaUIController">
     <children>
         <Label layoutX="133.0" layoutY="31.0" text="Dados da Nova Família" textFill="#d62828">
             <font>
@@ -40,8 +40,8 @@
                 <Font size="14.0" />
             </font>
         </JFXTextField>
-        <JFXButton stylesheets="@../styles/novomembroui.css" onMouseClicked="#novaFamilia" buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Continuar" />
-        <JFXButton stylesheets="@../styles/novomembroui.css" onMouseClicked="#voltar" buttonType="RAISED" layoutX="133.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Voltar" />
+        <JFXButton stylesheets="@../../styles/novomembroui.css" onMouseClicked="#novaFamilia" buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Continuar" />
+        <JFXButton stylesheets="@../../styles/novomembroui.css" onMouseClicked="#voltar" buttonType="RAISED" layoutX="133.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Voltar" />
 
         <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
         <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="640.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />

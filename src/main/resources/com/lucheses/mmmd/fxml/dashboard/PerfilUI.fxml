@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="contentArea" stylesheets="@../styles/fullpackstyling.css"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.PerfilUIController">
+<AnchorPane fx:id="contentArea" stylesheets="@../../styles/fullpackstyling.css"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.PerfilUIController">
     <children>
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="116.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="116.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="58.0" layoutY="14.0" text="SEXO" textFill="#fff">
                     <font>
@@ -29,7 +29,7 @@
                 </Label>
             </children>
         </Pane>
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="195.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="195.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="58.0" layoutY="9.0" text="DATA DE NASCIMENTO" textFill="#fff">
                     <font>
@@ -43,14 +43,14 @@
                 </Label>
             </children>
         </Pane>
-        <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="49.0">
                     <image>
-                        <Image url="@../img/default.png" />
+                        <Image url="@../../img/default.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="27.0" layoutY="263.0" text="Primeiro nome do membro" textFill="#003049">
+                <Label fx:id="nomeDirLbl" layoutX="27.0" layoutY="263.0" text="Primeiro nome do membro" textFill="#003049">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -76,7 +76,7 @@
             </right>
 
         </BorderPane>
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="34.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="34.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                                 
                 <Label layoutX="58.0" layoutY="14.0" text="NOME" textFill="#fff">
@@ -91,7 +91,7 @@
                 </Label>
             </children>
         </Pane>
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="58.0" layoutY="14.0" text="TELEFONE" textFill="#fff">
                     <font>
@@ -106,7 +106,7 @@
             </children>
         </Pane>
         <JFXButton onMouseClicked="#alterarDadosUser" buttonType="RAISED" layoutX="125.0" layoutY="454.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Alterar dados do utilizador" />
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="357.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="357.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                         
                 <Label layoutX="58.0" layoutY="14.0" text="EMAIL" textFill="#fff">

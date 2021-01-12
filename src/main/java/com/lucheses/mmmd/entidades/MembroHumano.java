@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lucheses.mmmd.entidades;
 
 import java.util.Date;
@@ -33,32 +28,32 @@ public class MembroHumano extends Membro {
     public MembroHumano() {
     }
 
-    public MembroHumano(String nomeDoMembro, Date dataDeNascimento, char sexo) {
-        super(nomeDoMembro, dataDeNascimento, sexo);
-    }
-
-    /*public MembroHumano() {
-        this.responsavel = false;
-    }*/
-
-    /*public MembroHumano(String nome, String telefone, Date dataDeNascimento, char sexo) {
-        this.nome = nome;
-        this.telefone = telefone;
+    public MembroHumano(String nomeDoMembro, Date dataDeNascimento, char sexo, String telefone) {
+        this.nome = nomeDoMembro;
         this.dataDeNascimento = dataDeNascimento;
         this.sexo = sexo;
-        this.responsavel = false;
-    }*/
+        if (!telefone.equals("")) {
+            this.telefone = telefone;
+        }
+    }
+    
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
+    public String getTelefone() {
+        return this.telefone;
+    }
 
     public void tornarResponsavel() {
-        this.responsavel = true;
+        this.setResponsavel(true);
     }
 
     public void setUtilizador(Utilizador utilizador) {
         this.utilizador = utilizador;
     }
 
-    public void setFamilia(Familia f) {
-        this.familia = f;
+    public void setResponsavel(boolean b) {
+        this.responsavel = b;
     }
-
 }

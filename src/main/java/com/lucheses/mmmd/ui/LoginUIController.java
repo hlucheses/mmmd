@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lucheses.mmmd.ui;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
+import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.Utilizador;
 import java.io.IOException;
@@ -18,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -63,18 +60,19 @@ public class LoginUIController implements Initializable {
     @FXML
     private void login(MouseEvent event) throws IOException {
 
-        Utilizador u = new Utilizador(emailTxt.getText(), passwordTxt.getText());
-        Sessao.utilizador = u;
+        Sessao.utilizador = new Utilizador(emailTxt.getText(), passwordTxt.getText());
         
-        if (u.verificarCredenciais()) {
-            //u = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
+        if (Sessao.utilizador.verificarCredenciais()) {
+            Sessao.utilizador = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
             
-            //if (u.estaDefinido()) {
-                
-            //} else {
-                App.novaJanela("fxml/NovoMembroUI");
+            if (Sessao.utilizador.isSet()) {
+                Sessao.membroHumano = Sessao.utilizador.getMembroHumano();
+                App.novaJanela("fxml/DashboardUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
-            //}
+            } else {
+                App.novaJanela("fxml/registo/NovoMembroUI");
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            }
         }
     }
 

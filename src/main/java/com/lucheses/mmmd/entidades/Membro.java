@@ -1,6 +1,6 @@
 package com.lucheses.mmmd.entidades;
 
-import java.time.LocalDate;
+import com.lucheses.mmmd.conf.Entidade;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "membro")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Membro extends Entidade {
+public abstract class Membro extends Entidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,18 +49,32 @@ public class Membro extends Entidade {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "familia_idfamilia", referencedColumnName = "idfamilia", nullable = false)
     protected Familia familia;
-
-    public Membro(String nomeDoMembro, Date dataDeNascimento, char sexo) {
-        this.nome = nomeDoMembro;
-        this.dataDeNascimento = dataDeNascimento;
-        this.sexo = sexo;
-    }
-    
-    public Membro() {
-        
-    }
     
     public void setFamilia(Familia f) {
         this.familia = f;
+    }
+
+    public void setDataDeNascimento(Date dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+    
+    public Date getDataDeNascimento() {
+        return this.dataDeNascimento;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+    
+    public char getSexo() {
+        return this.sexo;
     }
 }

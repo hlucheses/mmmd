@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.lucheses.mmmd.ui;
+package com.lucheses.mmmd.ui.dashboard;
 
 import com.lucheses.mmmd.App;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import com.lucheses.mmmd.conf.Sessao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -24,18 +20,17 @@ public class PerfilUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
+    @FXML
+    private Label nomeDirLbl;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        nomeDirLbl.setText(Sessao.membroHumano.getNome());
     }    
 
     @FXML
     private void alterarDadosUser(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/AlterarDadosUserUI");
+        App.novaJanela("fxml/dashboard/perfil/AlterarDadosUserUI");
     }
 
     @FXML

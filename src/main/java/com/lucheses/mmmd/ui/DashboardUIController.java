@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lucheses.mmmd.ui;
 
 import java.io.IOException;
@@ -15,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -31,7 +25,7 @@ public class DashboardUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/PerfilUI.fxml"));
+            Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/PerfilUI.fxml"));
 
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
@@ -51,7 +45,7 @@ public class DashboardUIController implements Initializable {
 
     @FXML
     private void irParaPerfil(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/PerfilUI.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/PerfilUI.fxml"));
 
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
@@ -59,7 +53,7 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private void irParaFamilia(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/FamiliaUI.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/FamiliaUI.fxml"));
 
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
@@ -67,7 +61,7 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private void irParaAnimais(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/AnimaisUI.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/AnimaisUI.fxml"));
 
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
@@ -75,7 +69,7 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private void irParaEconomia(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/EconomiaUI.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/EconomiaUI.fxml"));
 
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
@@ -83,7 +77,7 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private void irParaAvancado(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/AvancadoUI.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/AvancadoUI.fxml"));
 
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);

@@ -1,9 +1,9 @@
 package com.lucheses.mmmd.conf;
 
-import com.lucheses.mmmd.App;
+import com.lucheses.mmmd.entidades.Familia;
+import com.lucheses.mmmd.entidades.MembroHumano;
 import com.lucheses.mmmd.entidades.Utilizador;
-import java.io.IOException;
-import javafx.scene.Node;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -22,6 +22,11 @@ public final class BaseDeDados {
     static {
         EMF = Persistence.createEntityManagerFactory("MyMoneyMyDecisionPU");
         EM = EMF.createEntityManager();
+    }
+
+    public static void comitar() {
+        EM.getTransaction().begin();
+        EM.getTransaction().commit();
     }
 
     private BaseDeDados() {
@@ -53,5 +58,17 @@ public final class BaseDeDados {
         String sql = "SELECT COUNT(*) FROM Familia f";
         TypedQuery<Long> q = EM.createQuery(sql, Long.class);
         return q.getSingleResult() > 0;
+    }
+    
+    public static List<Familia> getTodasAsFamilias() {
+        String sql = "SELECT f FROM Familia f";
+        TypedQuery<Familia> query = EM.createQuery(sql , Familia.class);
+        return query.getResultList();
+    }
+    
+    public static List<MembroHumano> getMembrosResponsaveis(Familia f) {
+        String sql = "SELECT mh FROM MembroHumano mh INNER JOIN Membro m ON m.id = mh.id WHERE m.familia = :familia AND mh.responsavel = true";
+        TypedQuery<MembroHumano> query = EM.createQuery(sql , MembroHumano.class);
+        return query.setParameter("familia", f).getResultList();
     }
 }

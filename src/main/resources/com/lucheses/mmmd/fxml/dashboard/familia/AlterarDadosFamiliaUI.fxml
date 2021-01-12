@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.AlterarDadosFamiliaUIController">
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.familia.AlterarDadosFamiliaUIController">
     <children>
         <Label layoutX="133.0" layoutY="31.0" text="Alterar dados da família" textFill="#d62828">
             <font>
@@ -36,9 +36,9 @@
         </JFXTextField>
         
         <FontAwesomeIconView fx:id="closeBtn" glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
-      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Mudar nome" />
-      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="148.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Mudar telefone" />
-      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Mudar endereço" />
+      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Mudar nome" />
+      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="148.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Mudar telefone" />
+      <JFXButton buttonType="RAISED" layoutX="361.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Mudar endereço" />
       <JFXTextField fx:id="telefoneTxt1" focusColor="#d62828" layoutX="133.0" layoutY="257.0" prefHeight="25.0" prefWidth="217.0" promptText="Bairro">
          <font>
             <Font size="14.0" />

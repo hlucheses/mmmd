@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" stylesheets="@../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.FamiliaUIController">
+<AnchorPane fx:id="contentArea" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.FamiliaUIController">
     <children>
         <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../styles/fullpackstyling.css">
             <children>
                 <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="49.0">
                     <image>
-                        <Image url="@../img/default.png" />
+                        <Image url="@../../img/default.png" />
                     </image>
                 </ImageView>
                 <Label layoutX="69.0" layoutY="264.0" text="Nome da família" textFill="#003049">
@@ -48,7 +48,7 @@
         </BorderPane>
         <JFXButton buttonType="RAISED" layoutX="225.0" layoutY="436.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="107.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver relações" />
       <JFXButton onMouseClicked="#alterarDadosFamilia" buttonType="RAISED" layoutX="32.0" layoutY="436.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="172.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Alterar Dados da Família" />
-      <Pane layoutX="39.0" layoutY="195.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../styles/fullpackstyling.css">
+      <Pane layoutX="39.0" layoutY="195.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../../styles/fullpackstyling.css">
          <children>
             <Label layoutX="58.0" layoutY="14.0" text="ENDEREÇO" textFill="#fff">
                <font>
@@ -62,7 +62,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="39.0" layoutY="34.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../styles/fullpackstyling.css">
+      <Pane layoutX="39.0" layoutY="34.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../../styles/fullpackstyling.css">
          <children>
             <Label layoutX="58.0" layoutY="14.0" text="NOME" textFill="#fff">
                <font>
@@ -76,7 +76,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="39.0" layoutY="116.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../styles/fullpackstyling.css">
+      <Pane layoutX="39.0" layoutY="116.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../../styles/fullpackstyling.css">
          <children>
             <Label layoutX="58.0" layoutY="14.0" text="TELEFONE" textFill="#fff">
                <font>
@@ -90,7 +90,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../styles/fullpackstyling.css">
+      <Pane layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" styleClass="dadosUser" stylesheets="@../../styles/fullpackstyling.css">
          <children>
             <Label layoutX="58.0" layoutY="14.0" text="MEMBROS RESPONSÁVEIS" textFill="#fff">
                <font>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lucheses.mmmd.ui;
 
 import com.jfoenix.controls.JFXPasswordField;
@@ -45,15 +40,9 @@ public class RegistarUIController implements Initializable {
     @FXML
     private JFXPasswordField confirmPasswordTxt;
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }
 
     @FXML
@@ -82,8 +71,9 @@ public class RegistarUIController implements Initializable {
         if (validarEmail(email) && validarPassword(password, confirmPassword)) {
             Sessao.utilizador = new Utilizador(email, password);
             Sessao.utilizador.persistir();
+            Sessao.utilizador = BaseDeDados.getUtilizadorByEmail(email);
 
-            App.novaJanela("fxml/NovoMembroUI");
+            App.novaJanela("fxml/registo/NovoMembroUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
         } else {
             passwordTxt.setText("");

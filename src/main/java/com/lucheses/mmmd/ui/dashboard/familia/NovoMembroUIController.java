@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.lucheses.mmmd.ui;
+package com.lucheses.mmmd.ui.dashboard.familia;
 
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextField;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import com.lucheses.mmmd.App;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -27,34 +20,20 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author lucheses
  */
-public class NovoAnimalUIController implements Initializable {
+public class NovoMembroUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
     @FXML
-    private JFXTextField nomeDoMembroTxt;
-    @FXML
-    private JFXTextField nomeDaFamiliaTxt;
-    @FXML
-    private JFXTextField telefoneTxt;
-    @FXML
     private DatePicker dataDeNascimentoDP;
     @FXML
-    private DatePicker dataDeAquisicaoDP;
-    @FXML
     private JFXRadioButton masculinoRBtn;
-    @FXML
-    private ToggleGroup sexoToggle;
-    @FXML
-    private JFXRadioButton femininoRBtn;
-    @FXML
-    private FontAwesomeIconView minimizarBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        App.tornarArrastavel(contentArea);
         masculinoRBtn.setSelected(true);
         dataDeNascimentoDP.setValue(NOW_LOCAL_DATE());
-        dataDeAquisicaoDP.setValue(NOW_LOCAL_DATE());
     }
 
     public static final LocalDate NOW_LOCAL_DATE() {
@@ -63,9 +42,17 @@ public class NovoAnimalUIController implements Initializable {
         LocalDate localDate = LocalDate.parse(date, formatter);
         return localDate;
     }
+    @FXML
+    private void novoMembro(MouseEvent event) {
+    }
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
+    @FXML
+    private void minimizarPrograma(MouseEvent event) {
+    }
+    
 }

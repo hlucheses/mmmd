@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.lucheses.mmmd.ui;
+package com.lucheses.mmmd.ui.dashboard.perfil;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -15,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,22 +20,7 @@ public class AlterarDadosUserUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
-    @FXML
-    private JFXTextField nomeDoMembroTxt;
-    @FXML
-    private JFXTextField nomeDaFamiliaTxt;
-    @FXML
-    private JFXTextField telefoneTxt;
-    @FXML
-    private JFXPasswordField passwordTxt;
-    @FXML
-    private JFXPasswordField passwordTxt1;
-    @FXML
-    private FontAwesomeIconView closeBtn;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

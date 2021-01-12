@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.lucheses.mmmd.ui;
+package com.lucheses.mmmd.ui.dashboard;
 
 import com.lucheses.mmmd.App;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -27,9 +22,6 @@ public class FamiliaUIController implements Initializable {
     @FXML
     private FontAwesomeIconView minimizarBtn1;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -41,12 +33,12 @@ public class FamiliaUIController implements Initializable {
 
     @FXML
     private void alterarDadosFamilia(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/AlterarDadosFamiliaUI");
+        App.novaJanela("fxml/dashboard/familia/AlterarDadosFamiliaUI");
     }
     
     @FXML
     private void novoMembro(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/AdicionarMembroUI");
+        App.novaJanela("fxml/dashboard/familia/AdicionarMembroUI");
     }
     
     

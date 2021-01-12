@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.lucheses.mmmd.ui;
+package com.lucheses.mmmd.ui.registo;
 
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
+import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.Familia;
 import java.io.IOException;
@@ -39,13 +35,9 @@ public class NovaFamiliaUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //App.tornarArrastavel(contentArea);
-        //if (Sessao.familia.estaDefinida()) {
-          //  nomeDaFamiliaTxt.setText(Sessao.familia.getNome());
-            //Sessao.familia = null;
-        //}
+        App.tornarArrastavel(contentArea);
     }
-    
+
     @FXML
     private void fecharPrograma(MouseEvent event) {
         System.exit(0);
@@ -62,12 +54,12 @@ public class NovaFamiliaUIController implements Initializable {
     }
 
     @FXML
-    private void novaFamilia(MouseEvent event) {
+    private void novaFamilia(MouseEvent event) throws IOException {
         String nomeDaFamilia = nomeDaFamiliaTxt.getText();
         String telefoneDeCasa = telefoneDeCasaTxt.getText();
         String endereco = enderecoTxt.getText();
         String bairro = bairroTxt.getText();
-        
+
         if (nomeDaFamilia.equals("") || telefoneDeCasa.equals("") || endereco.equals("") || bairro.equals("")) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -75,16 +67,26 @@ public class NovaFamiliaUIController implements Initializable {
             alert.setContentText("Preencha todos os campos!");
             alert.showAndWait();
         } else {
+            Sessao.utilizador.setSet(true);
+            Sessao.utilizador.comitar();
             Sessao.familia = new Familia(nomeDaFamilia, telefoneDeCasa, endereco, bairro);
             Sessao.familia.persistir();
-            Sessao.membro.setFamilia(Sessao.familia);
-            Sessao.membro.persistir();
+            Sessao.membroHumano.setFamilia(Sessao.familia);
+            Sessao.membroHumano.tornarResponsavel();
+            Sessao.membroHumano.persistir();
+            App.novaJanela("fxml/DashboardUI");
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }
-    
+
     @FXML
     private void voltar(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/NovoMembroUI");
+
+        if (!BaseDeDados.haFamilias()) {
+            App.novaJanela("fxml/registo/NovoMembroUI");
+        } else {
+            App.novaJanela("fxml/registo/EscolherFamiliaUI");
+        }
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

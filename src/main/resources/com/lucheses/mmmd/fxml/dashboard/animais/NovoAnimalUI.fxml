@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.NovoAnimalUIController">
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.animais.NovoAnimalUIController">
     <children>
         <Label layoutX="133.0" layoutY="31.0" text="Dados do novo animal" textFill="#d62828">
             <font>
@@ -43,13 +43,13 @@
                 <Font size="10.0" />
             </font>
         </Label>
-        <DatePicker fx:id="dataDeNascimentoDP" layoutX="411.0" layoutY="100.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Nascimento" styleClass="date-picker" stylesheets="@../styles/novomembroui.css" />
+        <DatePicker fx:id="dataDeNascimentoDP" layoutX="411.0" layoutY="100.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Nascimento" styleClass="date-picker" stylesheets="@../../styles/novomembroui.css" />
         <Label layoutX="418.0" layoutY="152.0" text="Sexo">
             <font>
                 <Font size="14.0" />
             </font>
         </Label> 
-        <JFXRadioButton fx:id="masculinoRBtn" layoutX="418.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Masculino">
+        <JFXRadioButton fx:id="masculinoRBtn" layoutX="418.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../../styles/novomembroui.css" text="Masculino">
             <font>
                 <Font size="14.0" />
             </font>
@@ -58,7 +58,7 @@
             </toggleGroup>
         </JFXRadioButton>
         
-        <JFXRadioButton fx:id="femininoRBtn" layoutX="523.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../styles/novomembroui.css" text="Feminino">
+        <JFXRadioButton fx:id="femininoRBtn" layoutX="523.0" layoutY="180.0" styleClass="radio-button" stylesheets="@../../styles/novomembroui.css" text="Feminino">
             <font>
                 <Font size="14.0" />
             </font>
@@ -66,7 +66,7 @@
                 <fx:reference source="sexoToggle" />
             </toggleGroup>
         </JFXRadioButton>
-        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Continuar" />
+        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Continuar" />
         
         <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
       <Label layoutX="420.0" layoutY="219.0" text="Data de aquisição">
@@ -74,7 +74,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dataDeAquisicaoDP" layoutX="419.0" layoutY="234.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Aquisição" styleClass="date-picker" stylesheets="@../styles/novomembroui.css" />
+      <DatePicker fx:id="dataDeAquisicaoDP" layoutX="419.0" layoutY="234.0" prefHeight="30.0" prefWidth="182.0" promptText="Data de Aquisição" styleClass="date-picker" stylesheets="@../../styles/novomembroui.css" />
 
     </children>
 </AnchorPane>
