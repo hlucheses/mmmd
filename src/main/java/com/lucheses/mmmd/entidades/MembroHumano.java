@@ -44,11 +44,19 @@ public class MembroHumano extends Membro {
     public String getTelefone() {
         return this.telefone;
     }
+    
+    public boolean eResponsavel() {
+        return this.responsavel;
+    }
 
     public void tornarResponsavel() {
         this.setResponsavel(true);
     }
 
+    public Utilizador getUtilizador() {
+        return this.utilizador;
+    }
+    
     public void setUtilizador(Utilizador utilizador) {
         this.utilizador = utilizador;
     }

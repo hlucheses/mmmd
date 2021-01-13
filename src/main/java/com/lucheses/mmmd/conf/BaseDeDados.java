@@ -60,8 +60,14 @@ public final class BaseDeDados {
         return q.getSingleResult() > 0;
     }
     
+    public static boolean haAnimais(Familia f) {
+        String sql = "SELECT COUNT(*) FROM AnimalDeEstimacao a INNER JOIN Membro m ON a.id = m.id WHERE m.familia = :familia";
+        TypedQuery<Long> q = EM.createQuery(sql, Long.class);
+        return q.setParameter("familia", f).getSingleResult() > 0;
+    }
+    
     public static List<Familia> getTodasAsFamilias() {
-        String sql = "SELECT f FROM Familia f";
+        String sql = "SELECT f FROM Familia f ORDER BY f.nome";
         TypedQuery<Familia> query = EM.createQuery(sql , Familia.class);
         return query.getResultList();
     }

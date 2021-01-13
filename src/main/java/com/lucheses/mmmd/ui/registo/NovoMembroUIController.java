@@ -56,14 +56,14 @@ public class NovoMembroUIController implements Initializable {
 
         App.tornarArrastavel(contentArea);
         masculinoRBtn.setSelected(true);
-        dataDeNascimentoDP.setValue(NOW_LOCAL_DATE());
+        //dataDeNascimentoDP.setValue(NOW_LOCAL_DATE());
 
         if (Sessao.membroHumano != null) {
             nomeDoMembroTxt.setText(Sessao.membroHumano.getNome());
             telefoneTxt.setText(Sessao.membroHumano.getTelefone());
-            dataDeNascimentoDP.setValue(Sessao.membroHumano.getDataDeNascimento().toInstant()
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDate());
+            //dataDeNascimentoDP.setValue(Sessao.membroHumano.getDataDeNascimento().toInstant()
+              //      .atZone(ZoneId.systemDefault())
+                //    .toLocalDate());
             if (Sessao.membroHumano.getSexo() == 'F') {
                 masculinoRBtn.setSelected(false);
                 femininoRBtn.setSelected(true);
@@ -100,7 +100,7 @@ public class NovoMembroUIController implements Initializable {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Ocorreu um erro ao tentar registar um membro!");
-            alert.setContentText("O membro da família tem de ter nome");
+            alert.setContentText("O membro da família tem de ter nome" + dataDeNascimentoDP.getValue().toString());
             alert.showAndWait();
         } else {
 

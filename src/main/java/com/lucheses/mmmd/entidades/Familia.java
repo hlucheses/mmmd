@@ -1,5 +1,6 @@
 package com.lucheses.mmmd.entidades;
 
+import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Entidade;
 import java.util.List;
 import javax.persistence.Column;
@@ -80,5 +81,9 @@ public class Familia extends Entidade {
     
     public String getBairro() {
         return this.bairro;
+    }
+    
+    public boolean temAnimais() {
+        return BaseDeDados.haAnimais(this);
     }
 }

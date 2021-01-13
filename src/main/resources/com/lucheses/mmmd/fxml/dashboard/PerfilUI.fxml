@@ -22,7 +22,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="58.0" layoutY="34.0" text="Sexo do membro" textFill="WHITE">
+                <Label fx:id="sexoLbl" layoutX="58.0" layoutY="34.0" text="Sexo do membro" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -36,7 +36,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="58.0" layoutY="27.0" text="Data de nascimento do membro" textFill="WHITE">
+                <Label fx:id="dataDeNascimentoLbl" layoutX="58.0" layoutY="27.0" text="Data de nascimento do membro" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -84,21 +84,21 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="58.0" layoutY="34.0" text="Nome do membro" textFill="WHITE">
+                <Label fx:id="nomeLbl" layoutX="58.0" layoutY="34.0" text="Nome do membro" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
                 </Label>
             </children>
         </Pane>
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
+        <Pane fx:id="telefonePane" styleClass="dadosUser" layoutX="39.0" layoutY="357" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="58.0" layoutY="14.0" text="TELEFONE" textFill="#fff">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="58.0" layoutY="34.0" text="Número de telefone do membro" textFill="WHITE">
+                <Label fx:id="telefoneLbl" layoutX="58.0" layoutY="34.0" text="Número de telefone do membro" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -106,7 +106,7 @@
             </children>
         </Pane>
         <JFXButton onMouseClicked="#alterarDadosUser" buttonType="RAISED" layoutX="125.0" layoutY="454.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Alterar dados do utilizador" />
-        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="357.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
+        <Pane styleClass="dadosUser" layoutX="39.0" layoutY="276.0" prefHeight="66.0" prefWidth="472.0" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                         
                 <Label layoutX="58.0" layoutY="14.0" text="EMAIL" textFill="#fff">
@@ -114,7 +114,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="58.0" layoutY="34.0" text="Email do membro" textFill="WHITE">
+                <Label fx:id="emailLbl" layoutX="58.0" layoutY="34.0" text="Email do membro" textFill="WHITE">
                     <font>
                         <Font size="13.0" />
                     </font>

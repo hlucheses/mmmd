@@ -14,13 +14,17 @@ public class Sessao {
     public static Familia familia;
     
     static {
-        utilizador = null;
-        membroHumano = null;
-        familia = null;
+        terminar();
     }
     
     public static boolean estaDefinido(Object o) {
         return o != null;
+    }
+    
+    public static void terminar() {
+        utilizador = null;
+        membroHumano = null;
+        familia = null;
     }
     
     private Sessao() {

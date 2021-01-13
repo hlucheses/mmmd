@@ -50,6 +50,10 @@ public abstract class Membro extends Entidade {
     @JoinColumn(name = "familia_idfamilia", referencedColumnName = "idfamilia", nullable = false)
     protected Familia familia;
     
+    public Familia getFamilia() {
+        return this.familia;
+    }
+    
     public void setFamilia(Familia f) {
         this.familia = f;
     }

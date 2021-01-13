@@ -67,6 +67,7 @@ public class LoginUIController implements Initializable {
             
             if (Sessao.utilizador.isSet()) {
                 Sessao.membroHumano = Sessao.utilizador.getMembroHumano();
+                Sessao.familia = Sessao.membroHumano.getFamilia();
                 App.novaJanela("fxml/DashboardUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
             } else {

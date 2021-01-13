@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="contentArea" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
-        <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../styles/fullpackstyling.css">
+        <Pane layoutX="569.0" layoutY="46.0" prefHeight="297.0" prefWidth="270.0" stylesheets="@../../styles/fullpackstyling.css">
          <children>
                 <FontAwesomeIconView glyphName="DOLLAR" layoutX="91.0" layoutY="257.0" size="15em" styleClass="closeBtn" wrappingWidth="147.40002346038818" />
          </children>

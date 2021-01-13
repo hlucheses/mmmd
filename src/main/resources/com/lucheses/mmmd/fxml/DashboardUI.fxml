@@ -3,34 +3,32 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../styles/style.css" fx:controller="com.lucheses.mmmd.ui.DashboardUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.DashboardUIController">
     <children>
         <AnchorPane prefHeight="616.0" prefWidth="999.0" style="-fx-background-color: #fff;">
             <children>
                 <VBox prefHeight="54.0" prefWidth="74.0" style="-fx-background-color: #d62828;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
                         <Pane prefHeight="79.0" prefWidth="74.0" styleClass="menuBtn" />
-                        <JFXButton onMouseClicked="#irParaPerfil" contentDisplay="TOP" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Perfil" />
-                        <JFXButton onMouseClicked="#irParaFamilia" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Família" />
-                        <JFXButton onMouseClicked="#irParaAnimais" contentDisplay="TOP" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Animais" />
-                        <JFXButton onMouseClicked="#irParaEconomia" contentDisplay="TOP" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Economia" />
-                        <JFXButton onMouseClicked="#irParaAvancado" contentDisplay="TOP" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Avançado" />
+                        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#irParaPerfil" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Perfil" />
+                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#irParaFamilia" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Família" />
+                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#irParaAnimais" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Animais" />
+                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#irParaEconomia" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Economia" />
+                        <JFXButton fx:id="avancadoBtn" contentDisplay="TOP" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#irParaAvancado" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Avançado" />
+                        <FontAwesomeIconView style="-fx-fill: #fff;" fx:id="sairFA" glyphName="SIGN_OUT" onMouseClicked="#sair" size="2em" styleClass="closeBtn" />
+                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#sair" prefHeight="45.0" prefWidth="74.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Sair" />
 
                      
                     </children>
                 </VBox>
                 <Pane fx:id="contentArea" layoutX="91.0" layoutY="69.0" prefHeight="531.0" prefWidth="886.0" style="-fx-background-color: #fff; " stylesheets="@../styles/fullpackstyling.css">
                     <children>
-                        <Label layoutX="91.0" layoutY="30.0" text="Erro" textFill="#003049"/>
+                        <Label layoutX="91.0" layoutY="30.0" text="Erro" textFill="#003049" />
                     </children>
                 </Pane>
             

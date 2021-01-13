@@ -26,7 +26,7 @@
                   <Font size="18.0" />
               </font>
           </Label>
-          <Label alignment="CENTER" layoutX="106.0" layoutY="77.0" prefWidth="265.0" text="Aqui aparece o nome e a espécie de cada animal" textFill="#9a9292" wrapText="true">
+          <Label fx:id="listaAnimaisLbl" alignment="CENTER" layoutX="106.0" layoutY="77.0" prefWidth="265.0" text="Aqui aparece o nome e a espécie de cada animal" textFill="#9a9292" wrapText="true">
               <font>
                   <Font size="13.0" />
               </font>
