@@ -40,7 +40,7 @@
                         <Font name="Ebrima Bold" size="14.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="emailTxt" focusColor="#d62828" labelFloat="true" layoutX="73.0" layoutY="221.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="255.0" promptText="Email" unFocusColor="#003049">
+                <JFXTextField fx:id="usernameTxt" focusColor="#d62828" labelFloat="true" layoutX="73.0" layoutY="221.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="255.0" promptText="Username" unFocusColor="#003049">
                     <font>
                         <Font name="Ebrima" size="14.0" />
                     </font>

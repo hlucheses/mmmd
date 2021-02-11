@@ -6,6 +6,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javax.persistence.Column;
@@ -32,8 +34,8 @@ public class Utilizador extends Entidade {
     @Column(name = "idutilizador")
     private long id;
     
-    @Column(name = "email")
-    private String email;
+    @Column(name = "username")
+    private String username;
     
     @Column(name = "password")
     private String password;
@@ -52,8 +54,8 @@ public class Utilizador extends Entidade {
     public Utilizador() {
     }
     
-    public Utilizador(String email, String password) {
-        this.email = email.toLowerCase();
+    public Utilizador(String username, String password) {
+        this.username = username.toLowerCase();
         this.password = encriptarPassword_SHA_512(password);
     }
     
@@ -77,12 +79,12 @@ public class Utilizador extends Entidade {
         return passwordEncriptada;
     }
     
-    public String getEmail() {
-        return this.email;
+    public String getUsername() {
+        return this.username;
     }
     
-    public void setEmail(String email) {
-        this.email = email.toLowerCase();
+    public void setUsername(String username) {
+        this.username = username.toLowerCase();
     }
     
     public void setPassword(String password) {
@@ -97,14 +99,18 @@ public class Utilizador extends Entidade {
         this.set = b;
     }
     
+    public boolean eAdmin() {
+        return this.getUsername().equals("admin");
+    }
+    
     public MembroHumano getMembroHumano() {
         return this.membroHumano;
     }
     
     public boolean verificarCredenciais() {
         
-        if (BaseDeDados.emailJaExiste(this.email)) {
-            Utilizador u = BaseDeDados.getUtilizadorByEmail(this.email);
+        if (BaseDeDados.usernameJaExiste(this.username)) {
+            Utilizador u = BaseDeDados.getUtilizadorByUsername(this.username);
             if (u.password.equals(this.password)) {
                 return true;
             }
@@ -117,5 +123,42 @@ public class Utilizador extends Entidade {
         alert.showAndWait();
         
         return false;
+    }
+    
+    public static boolean validarPassword(String password, String confirmPassword) {
+        final Pattern PASSWORD_VALIDA_TAMANHO = Pattern.compile("^.{8,16}$");
+        final Pattern PASSWORD_VALIDA_CARACTERES
+                = Pattern.compile("^(?=.*?[0-9])(?=.*?[A-Za-z]).+$");
+        Matcher matcherTam = PASSWORD_VALIDA_TAMANHO.matcher(password);
+        Matcher matcherChar = PASSWORD_VALIDA_CARACTERES.matcher(password);
+
+        boolean passwordTamVal = matcherTam.find();
+        boolean passwordCharVal = matcherChar.find();
+        boolean passwordEqualsConfirm = password.equals(confirmPassword);
+        boolean passwordValida = passwordTamVal && passwordCharVal && passwordEqualsConfirm;
+
+        if (!passwordValida) {
+
+            String strPwErro = "";
+
+            if (!passwordTamVal) {
+                strPwErro += "A password deve ter de 8 a 16 caracteres!\n";
+            }
+
+            if (!passwordCharVal) {
+                strPwErro += "A password deve ter letras e números!\n";
+            }
+
+            if (!passwordEqualsConfirm) {
+                strPwErro += "As passwords não correspondem!\n";
+            }
+
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Ocorreu um erro ao tentar criar uma conta!");
+            alert.setContentText("Password inválida!\n" + strPwErro);
+            alert.showAndWait();
+        }
+        return passwordValida;
     }
 }

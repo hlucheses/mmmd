@@ -46,8 +46,8 @@ public abstract class Membro extends Entidade {
     @Column(name = "data_criacao")
     protected Date data_criacao;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "familia_idfamilia", referencedColumnName = "idfamilia", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "familia_idfamilia", referencedColumnName = "idfamilia")
     protected Familia familia;
     
     public Familia getFamilia() {

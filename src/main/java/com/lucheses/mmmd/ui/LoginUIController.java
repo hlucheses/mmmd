@@ -30,7 +30,7 @@ public class LoginUIController implements Initializable {
     @FXML
     private Pane contentArea;
     @FXML
-    private JFXTextField emailTxt;
+    private JFXTextField usernameTxt;
     @FXML
     private JFXPasswordField passwordTxt;
 
@@ -60,16 +60,32 @@ public class LoginUIController implements Initializable {
     @FXML
     private void login(MouseEvent event) throws IOException {
 
-        Sessao.utilizador = new Utilizador(emailTxt.getText(), passwordTxt.getText());
-        
+        Sessao.utilizador = new Utilizador(usernameTxt.getText(), passwordTxt.getText());
+
         if (Sessao.utilizador.verificarCredenciais()) {
-            Sessao.utilizador = BaseDeDados.getUtilizadorByEmail(emailTxt.getText());
-            
-            if (Sessao.utilizador.isSet()) {
-                Sessao.membroHumano = Sessao.utilizador.getMembroHumano();
-                Sessao.familia = Sessao.membroHumano.getFamilia();
+            Sessao.utilizador = BaseDeDados.getUtilizadorByUsername(usernameTxt.getText());
+
+            if (Sessao.utilizador.eAdmin()) {
                 App.novaJanela("fxml/DashboardUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
+            } else if (Sessao.utilizador.isSet()) {
+                Sessao.membroHumano = Sessao.utilizador.getMembroHumano();
+
+                if (!Sessao.membroHumano.temFamilia()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Aviso");
+                    alert.setHeaderText("Membro sem família");
+                    alert.setContentText("Antes de poder usar o sistema peça\n"
+                            + "ao administrador ou membro responsável para\n"
+                            + "incluí-lo na sua família");
+                    alert.showAndWait();
+
+                    Sessao.terminar();
+                } else {
+                    Sessao.familia = Sessao.membroHumano.getFamilia();
+                    App.novaJanela("fxml/DashboardUI");
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
+                }
             } else {
                 App.novaJanela("fxml/registo/NovoMembroUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -77,5 +93,4 @@ public class LoginUIController implements Initializable {
         }
     }
 
-    
 }

@@ -61,10 +61,16 @@
                 <fx:reference source="sexoToggle" />
             </toggleGroup>
         </JFXRadioButton>
-        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../styles/novomembroui.css" text="Continuar" />
+        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoMembro" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Continuar" />
         
         <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
         <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="640.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />
+      <JFXTextField fx:id="emailTxt" focusColor="#d62828" layoutX="132.0" layoutY="270.0" prefHeight="25.0" prefWidth="217.0" promptText="E-mail (opcional)">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="voltarBtn" buttonType="RAISED" layoutX="133.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#voltar" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Voltar" />
 
     </children>
 </AnchorPane>

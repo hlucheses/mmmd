@@ -4,7 +4,6 @@ import com.lucheses.mmmd.App;
 import com.lucheses.mmmd.conf.Sessao;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -52,19 +51,13 @@ public class PerfilUIController implements Initializable {
         
         nomeDirLbl.setText(Sessao.membroHumano.getNome());
         nomeLbl.setText(Sessao.membroHumano.getNome());
-        emailLbl.setText(Sessao.membroHumano.getUtilizador().getEmail());
+        emailLbl.setText(Sessao.membroHumano.getEmail());
         dataDeNascimentoLbl.setText(dataDeNascimento);
         sexoLbl.setText(Sessao.membroHumano.getSexo() == 'M' ? "Masculino" : "Feminino");
-        
-        
     }    
 
     @FXML
     private void alterarDadosUser(MouseEvent event) throws IOException {
         App.novaJanela("fxml/dashboard/perfil/AlterarDadosUserUI");
-    }
-
-    @FXML
-    private void novoAnimal(MouseEvent event) {
     }
 }

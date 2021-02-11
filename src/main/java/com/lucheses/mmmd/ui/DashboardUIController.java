@@ -13,8 +13,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * FXML Controller class
@@ -26,22 +30,37 @@ public class DashboardUIController implements Initializable {
     @FXML
     Pane contentArea;
     @FXML
+    AnchorPane parent;
+    @FXML
     JFXButton avancadoBtn;
+    @FXML
+    Pane userSettings;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        App.tornarArrastavel(parent);
+
+        
+
+        String ecraInicial = "../fxml/dashboard/PerfilUI.fxml";
+
+        if (Sessao.utilizador.eAdmin()) {
+            ecraInicial = "../fxml/dashboard/AdminUI.fxml";
+            userSettings.setVisible(false);
+        } else if (!Sessao.membroHumano.eResponsavel()) {
+            avancadoBtn.setVisible(false);
+        }
+
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/PerfilUI.fxml"));
+
+            Parent fxml = FXMLLoader.load(getClass().getResource(ecraInicial));
 
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
         } catch (IOException ex) {
             Logger.getLogger(DashboardUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if (!Sessao.membroHumano.eResponsavel()) {
-            avancadoBtn.setVisible(false);
-        }
+
     }
 
     @FXML
@@ -60,7 +79,7 @@ public class DashboardUIController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void irParaFamilia(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/FamiliaUI.fxml"));
@@ -68,7 +87,7 @@ public class DashboardUIController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void irParaAnimais(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/AnimaisUI.fxml"));
@@ -76,7 +95,7 @@ public class DashboardUIController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void irParaEconomia(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/EconomiaUI.fxml"));
@@ -84,7 +103,7 @@ public class DashboardUIController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void irParaAvancado(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("../fxml/dashboard/AvancadoUI.fxml"));
@@ -92,7 +111,7 @@ public class DashboardUIController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void sair(MouseEvent event) throws IOException {
         Sessao.terminar();
@@ -100,4 +119,3 @@ public class DashboardUIController implements Initializable {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }
-

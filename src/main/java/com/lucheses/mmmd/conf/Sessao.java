@@ -14,7 +14,11 @@ public class Sessao {
     public static Familia familia;
     
     static {
-        terminar();
+        if (!BaseDeDados.usernameJaExiste("admin")) {
+            Utilizador admin = new Utilizador("admin", "admin");
+            admin.setSet(true);
+            admin.persistir();
+        }
     }
     
     public static boolean estaDefinido(Object o) {
@@ -25,6 +29,10 @@ public class Sessao {
         utilizador = null;
         membroHumano = null;
         familia = null;
+    }
+
+    public static void iniciar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private Sessao() {

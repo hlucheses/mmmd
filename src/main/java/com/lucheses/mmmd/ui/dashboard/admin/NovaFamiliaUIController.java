@@ -1,8 +1,7 @@
-package com.lucheses.mmmd.ui.registo;
+package com.lucheses.mmmd.ui.dashboard.admin;
 
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
-import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.Familia;
 import java.io.IOException;
@@ -36,6 +35,8 @@ public class NovaFamiliaUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.tornarArrastavel(contentArea);
+
+        
     }
 
     @FXML
@@ -67,26 +68,9 @@ public class NovaFamiliaUIController implements Initializable {
             alert.setContentText("Preencha todos os campos!");
             alert.showAndWait();
         } else {
-            Sessao.utilizador.setSet(true);
-            Sessao.utilizador.comitar();
             Sessao.familia = new Familia(nomeDaFamilia, telefoneDeCasa, endereco, bairro);
-            Sessao.familia.persistir();
-            Sessao.membroHumano.setFamilia(Sessao.familia);
-            Sessao.membroHumano.tornarResponsavel();
-            Sessao.membroHumano.persistir();
-            App.novaJanela("fxml/DashboardUI");
+            App.novaJanela("fxml/dashboard/admin/EscolherMembroUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
         }
-    }
-
-    @FXML
-    private void voltar(MouseEvent event) throws IOException {
-
-        if (!BaseDeDados.haFamilias()) {
-            App.novaJanela("fxml/registo/NovoMembroUI");
-        } else {
-            App.novaJanela("fxml/registo/EscolherFamiliaUI");
-        }
-        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

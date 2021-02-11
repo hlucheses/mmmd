@@ -1,5 +1,6 @@
 package com.lucheses.mmmd;
 
+import com.lucheses.mmmd.conf.Sessao;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Sessao.terminar(); // Só para certificar que a sessao está em condições
+        
         scene = new Scene(loadFXML("fxml/LoginUI"));
 
         scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
@@ -69,7 +72,6 @@ public class App extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
-        
     }
 
     public static void main(String[] args) {

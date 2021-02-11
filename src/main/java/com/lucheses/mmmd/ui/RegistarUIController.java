@@ -34,7 +34,7 @@ public class RegistarUIController implements Initializable {
     @FXML
     private FontAwesomeIconView minimizarBtn;
     @FXML
-    private JFXTextField emailTxt;
+    private JFXTextField usernameTxt;
     @FXML
     private JFXPasswordField passwordTxt;
     @FXML
@@ -64,14 +64,14 @@ public class RegistarUIController implements Initializable {
     @FXML
     private void registar(MouseEvent event) throws IOException {
 
-        String email = emailTxt.getText();
+        String username = usernameTxt.getText();
         String password = passwordTxt.getText();
         String confirmPassword = confirmPasswordTxt.getText();
 
-        if (validarEmail(email) && validarPassword(password, confirmPassword)) {
-            Sessao.utilizador = new Utilizador(email, password);
+        if (validarUsername(username) && Utilizador.validarPassword(password, confirmPassword)) {
+            Sessao.utilizador = new Utilizador(username, password);
             Sessao.utilizador.persistir();
-            Sessao.utilizador = BaseDeDados.getUtilizadorByEmail(email);
+            Sessao.utilizador = BaseDeDados.getUtilizadorByUsername(username);
 
             App.novaJanela("fxml/registo/NovoMembroUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -86,69 +86,31 @@ public class RegistarUIController implements Initializable {
 
     }
 
-    private boolean validarEmail(String email) {
-        final Pattern EMAIL_VALIDO
-                = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = EMAIL_VALIDO.matcher(email);
-        boolean emailEValido = matcher.find();
+    private boolean validarUsername(String username) {
+        final Pattern USERNAME_VALIDO =
+                Pattern.compile("^(?=.*?[A-Za-z])[a-zA-Z0-9_]{3,30}$", Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = USERNAME_VALIDO.matcher(username);
+        boolean usernameEValido = matcher.find();
 
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle("Aviso");
         alert.setHeaderText("Ocorreu um erro ao tentar criar uma conta!");
 
-        String msgAlert = "Email Inválido!";
+        String msgAlert = "Username Inválido!";
 
-        if (emailEValido) {
-            if (BaseDeDados.emailJaExiste(email)) {
-                msgAlert += "\nJá existe uma conta com este email!";
-                emailEValido = false;
+        if (usernameEValido) {
+            if (BaseDeDados.usernameJaExiste(username)) {
+                msgAlert += "\nJá existe uma conta com este username!";
+                usernameEValido = false;
             }
         }
 
-        if (!emailEValido) {
+        if (!usernameEValido) {
             alert.setContentText(msgAlert);
             alert.showAndWait();
         }
 
-        return emailEValido;
+        return usernameEValido;
     }
-
-    private static boolean validarPassword(String password, String confirmPassword) {
-        final Pattern PASSWORD_VALIDA_TAMANHO = Pattern.compile("^.{8,16}$");
-        final Pattern PASSWORD_VALIDA_CARACTERES
-                = Pattern.compile("^(?=.*?[0-9])(?=.*?[A-Za-z]).+$");
-        Matcher matcherTam = PASSWORD_VALIDA_TAMANHO.matcher(password);
-        Matcher matcherChar = PASSWORD_VALIDA_CARACTERES.matcher(password);
-
-        boolean passwordTamVal = matcherTam.find();
-        boolean passwordCharVal = matcherChar.find();
-        boolean passwordEqualsConfirm = password.equals(confirmPassword);
-        boolean passwordValida = passwordTamVal && passwordCharVal && passwordEqualsConfirm;
-
-        if (!passwordValida) {
-
-            String strPwErro = "";
-
-            if (!passwordTamVal) {
-                strPwErro += "A password deve ter de 8 a 16 caracteres!\n";
-            }
-
-            if (!passwordCharVal) {
-                strPwErro += "A password deve ter letras e números!\n";
-            }
-
-            if (!passwordEqualsConfirm) {
-                strPwErro += "As passwords não correspondem!\n";
-            }
-
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Ocorreu um erro ao tentar criar uma conta!");
-            alert.setContentText("Password inválida!\n" + strPwErro);
-            alert.showAndWait();
-        }
-
-        return passwordValida;
-    }
-
 }

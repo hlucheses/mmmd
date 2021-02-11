@@ -29,4 +29,14 @@ public class AnimalDeEstimacao extends Membro {
     public AnimalDeEstimacao() {
         
     }
+
+    public AnimalDeEstimacao(String nome, String especie, String raca, Date dataDeNascimento, Date dataDeAquisicao, char sexo, Familia familia) {
+        this.nome = nome;
+        this.dataDeAquisicao = dataDeAquisicao;
+        this.especie = especie;
+        this.raca = raca;
+        this.sexo = sexo;
+        this.dataDeNascimento = dataDeNascimento;
+        this.familia = familia;
+    }
 }
