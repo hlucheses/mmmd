@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.economia.VerRendimentosUIController">
+    <children>
+        <Label layoutX="133.0" layoutY="31.0" text="Ver Rendimetos" textFill="#d62828">
+            <font>
+                <Font name="Impact" size="24.0" />
+            </font>
+        </Label>
+        <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
+        <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
+        
+        <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+      <TableView fx:id="rendimentosTbl" layoutX="143.0" layoutY="94.0" prefHeight="282.0" prefWidth="467.0">
+        <columns>
+          <TableColumn fx:id="origemCol" prefWidth="139.20001220703125" text="Origem" />
+          <TableColumn fx:id="valorCol" prefWidth="156.79998779296875" text="Valor" />
+            <TableColumn fx:id="dataRendimentoCol" prefWidth="171.19992065429688" text="Data Rendimento" />
+        </columns>
+      </TableView>
+
+
+    </children>
+</AnchorPane>

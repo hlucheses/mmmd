@@ -56,7 +56,7 @@ public class EscolherMembroUIController implements Initializable {
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
-        System.exit(0);
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
@@ -77,8 +77,16 @@ public class EscolherMembroUIController implements Initializable {
             alert.setTitle("Aviso");
             alert.setHeaderText("Precisa de seleccionar um membro!");
             alert.showAndWait();
-        } else {
+        } else if (Sessao.utilizador.eAdmin()) {
             App.novaJanela("fxml/dashboard/admin/EscolherFamiliaUI");
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Utilizador inserido na família com sucesso!");
+            alert.showAndWait();
+            Sessao.membroHumano.setFamilia(Sessao.familia);
+            Sessao.membroHumano.persistir();
             ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }

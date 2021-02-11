@@ -1,5 +1,6 @@
 package com.lucheses.mmmd.ui.registo;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.lucheses.mmmd.App;
 import com.lucheses.mmmd.conf.BaseDeDados;
@@ -12,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
@@ -27,10 +29,13 @@ public class EscolherFamiliaUIController implements Initializable {
     private AnchorPane contentArea;
     @FXML
     private JFXComboBox<Familia> seleccionarFamiliaCombo;
+    @FXML
+    private JFXButton voltarBtn;
+    @FXML
+    private JFXButton entrarFamiliaBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        App.tornarArrastavel(contentArea);
         seleccionarFamiliaCombo.setItems(FXCollections.observableArrayList(BaseDeDados.getTodasAsFamilias()));
         seleccionarFamiliaCombo.setConverter(new StringConverter<Familia>() {
             @Override
@@ -46,6 +51,11 @@ public class EscolherFamiliaUIController implements Initializable {
         seleccionarFamiliaCombo.valueProperty().addListener((obs, oldItem, newItem) -> {
             Sessao.familia = newItem;
         });
+        
+        if (Sessao.acao.equals("VER_FAMILIA_ADMIN")) {
+            entrarFamiliaBtn.setVisible(false);
+            voltarBtn.setVisible(false);
+        }
     }
 
     @FXML
@@ -67,7 +77,11 @@ public class EscolherFamiliaUIController implements Initializable {
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
-        System.exit(0);
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        Sessao.acao = "DEFAULT";
+        if (!Sessao.utilizador.isSet()) {
+            System.exit(0);
+        }
     }
 
     @FXML

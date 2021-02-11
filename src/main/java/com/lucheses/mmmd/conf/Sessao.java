@@ -12,6 +12,7 @@ public class Sessao {
     public static Utilizador utilizador;
     public static MembroHumano membroHumano;
     public static Familia familia;
+    public static String acao;
     
     static {
         if (!BaseDeDados.usernameJaExiste("admin")) {
@@ -29,10 +30,7 @@ public class Sessao {
         utilizador = null;
         membroHumano = null;
         familia = null;
-    }
-
-    public static void iniciar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        acao = "DEFAULT";
     }
     
     private Sessao() {

@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
-import com.lucheses.mmmd.entidades.Gasto;
 import com.lucheses.mmmd.entidades.MembroHumano;
 import com.lucheses.mmmd.entidades.Rendimento;
 import java.net.URL;
@@ -20,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
@@ -32,15 +33,21 @@ public class NovoRendimentoUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
-    @FXML
     private DatePicker dataDP;
-    @FXML
     private JFXTextField valorTxt;
-    @FXML
     private JFXTextField origemTxt;
-    @FXML
     private JFXComboBox<MembroHumano> seleccionarBeneficiarioCombo;
     private MembroHumano beneficiarioRendimento;
+    @FXML
+    private TreeTableView<?> gastosTbl;
+    @FXML
+    private TreeTableColumn<?, ?> designacaoCol;
+    @FXML
+    private TreeTableColumn<?, ?> valorCol;
+    @FXML
+    private TreeTableColumn<?, ?> localGastoCol;
+    @FXML
+    private TreeTableColumn<?, ?> dataGastoCol;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,7 +90,6 @@ public class NovoRendimentoUIController implements Initializable {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
-    @FXML
     private void novoRendimento(MouseEvent event) {
         String valor = valorTxt.getText();
         String origem = origemTxt.getText();

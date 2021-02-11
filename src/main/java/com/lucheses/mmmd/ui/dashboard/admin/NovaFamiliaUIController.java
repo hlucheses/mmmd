@@ -35,13 +35,11 @@ public class NovaFamiliaUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.tornarArrastavel(contentArea);
-
-        
     }
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
-        System.exit(0);
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
@@ -69,7 +67,7 @@ public class NovaFamiliaUIController implements Initializable {
             alert.showAndWait();
         } else {
             Sessao.familia = new Familia(nomeDaFamilia, telefoneDeCasa, endereco, bairro);
-            App.novaJanela("fxml/dashboard/admin/EscolherMembroUI");
+            App.novaJanela("fxml/dashboard/admin/EscolherMembroResponsavelUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }

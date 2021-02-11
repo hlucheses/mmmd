@@ -70,6 +70,7 @@ public class DashboardUIController implements Initializable {
 
     @FXML
     private void minimizarPrograma(MouseEvent event) {
+        App.stage.setIconified(true);
     }
 
     @FXML

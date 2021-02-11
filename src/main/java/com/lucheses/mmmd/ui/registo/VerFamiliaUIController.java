@@ -46,7 +46,6 @@ public class VerFamiliaUIController implements Initializable {
         telefoneLbl.setText(Sessao.familia.getTelefone());
         enderecoLbl.setText(enderecoEBairro);
         membrosResponsaveisLbl.setText(strMembrosResponsaveis);
-        
     }  
     
     @FXML

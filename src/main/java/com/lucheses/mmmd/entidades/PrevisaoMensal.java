@@ -55,6 +55,10 @@ public class PrevisaoMensal extends Entidade {
         return this.dataPrevisao;
     }
     
+    public double getPoupanca() {
+        return this.poupanca;
+    }
+    
     public PrevisaoMensal(double poupanca, Date dataPrevisao, Familia familia) {
         this.poupanca = poupanca;
         this.dataPrevisao = dataPrevisao;
@@ -63,5 +67,23 @@ public class PrevisaoMensal extends Entidade {
     
     public static Date dataPrevisao(Familia f) {
         return BaseDeDados.getUltimaPrevisao(f);
+    }
+    
+    public double calcularRendimentos() {
+        double rendimentos = 0;
+        for (int i = 0; i < this.rendimentoMensal.size(); i++) {
+            rendimentos += this.rendimentoMensal.get(i).getValor();
+        }
+        System.out.println(rendimentos);
+        return rendimentos;
+    }
+    
+    public double calcularGastos() {
+        double gastos = 0;
+        for (int i = 0; i < this.gastoMensal.size(); i++) {
+            gastos += this.gastoMensal.get(i).getValor();
+        }
+        System.out.println(gastos);
+        return gastos;
     }
 }

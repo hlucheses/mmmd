@@ -45,7 +45,7 @@ public class Gasto extends Entidade {
     protected MembroHumano autorGasto;
 
     public Gasto() {
-
+        
     }
 
     public Gasto(Date dataGasto, double valor, String designacao, String local, MembroHumano autorGasto, PrevisaoMensal previsaoMensal) {
@@ -55,5 +55,21 @@ public class Gasto extends Entidade {
         this.localGasto = local;
         this.autorGasto = autorGasto;
         this.previsaoMensal = previsaoMensal;
+    }
+    
+    public double getValor() {
+        return this.valor;
+    }
+    
+    public String getDesignacao() {
+        return this.designacao;
+    }
+    
+    public String getLocalGasto() {
+        return this.localGasto;
+    }
+    
+    public Date getDataGasto() {
+        return this.dataGasto;
     }
 }

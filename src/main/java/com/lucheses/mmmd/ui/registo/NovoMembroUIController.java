@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.lucheses.mmmd.App;
+import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
 import com.lucheses.mmmd.entidades.MembroHumano;
 import java.io.IOException;
@@ -61,7 +62,10 @@ public class NovoMembroUIController implements Initializable {
 
         if (Sessao.utilizador.isSet()) {
             voltarBtn.setVisible(true);
+        }
 
+        if (Sessao.utilizador.eAdmin() && !BaseDeDados.verificarResponsaveis()) {
+            voltarBtn.setVisible(false);
         }
 
         App.tornarArrastavel(contentArea);
@@ -127,10 +131,16 @@ public class NovoMembroUIController implements Initializable {
                 alert.showAndWait();
                 Sessao.terminar();
                 App.novaJanela("fxml/LoginUI");
-            } else {
+            } else if (Sessao.utilizador.eAdmin()) {
                 App.novaJanela("fxml/dashboard/admin/EscolherFamiliaUI");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Aviso");
+                alert.setHeaderText("Utilizador inserido na família com sucesso!");
+                alert.showAndWait();
+                Sessao.membroHumano.setFamilia(Sessao.familia);
+                Sessao.membroHumano.persistir();
             }
-
             ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }

@@ -10,9 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -64,5 +62,22 @@ public class EconomiaUIController implements Initializable {
     private void novaPrevisao(MouseEvent event) throws IOException {
         App.novaJanela("fxml/dashboard/economia/NovaPrevisaoUI");
     }
-
+    
+    @FXML
+    private void verPrevisoes(MouseEvent event) throws IOException {
+        App.novaJanela("fxml/dashboard/economia/VerPrevisoesUI");
+    }
+    
+    @FXML
+    private void verGastos(MouseEvent event) throws IOException {
+        App.novaJanela("fxml/dashboard/economia/VerGastosUI");
+    }
+    
+    @FXML
+    private void verRendimentos(MouseEvent event) throws IOException {
+        App.novaJanela("fxml/dashboard/economia/VerRendimentosUI");
+    }
+    
+    
+ 
 }

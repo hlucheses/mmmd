@@ -59,6 +59,7 @@ public class LoginUIController implements Initializable {
 
     @FXML
     private void login(MouseEvent event) throws IOException {
+        Sessao.terminar();
 
         Sessao.utilizador = new Utilizador(usernameTxt.getText(), passwordTxt.getText());
 
@@ -69,7 +70,12 @@ public class LoginUIController implements Initializable {
                 App.novaJanela("fxml/DashboardUI");
                 ((Node) (event.getSource())).getScene().getWindow().hide();
             } else if (Sessao.utilizador.isSet()) {
+                
                 Sessao.membroHumano = Sessao.utilizador.getMembroHumano();
+                
+                if (Sessao.membroHumano == null) {
+                    Sessao.membroHumano = BaseDeDados.getMembroHumanoByUsername(Sessao.utilizador.getUsername());
+                }
 
                 if (!Sessao.membroHumano.temFamilia()) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -79,8 +85,6 @@ public class LoginUIController implements Initializable {
                             + "ao administrador ou membro responsável para\n"
                             + "incluí-lo na sua família");
                     alert.showAndWait();
-
-                    Sessao.terminar();
                 } else {
                     Sessao.familia = Sessao.membroHumano.getFamilia();
                     App.novaJanela("fxml/DashboardUI");

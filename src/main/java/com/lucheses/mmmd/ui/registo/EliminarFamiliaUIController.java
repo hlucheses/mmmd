@@ -1,10 +1,10 @@
-package com.lucheses.mmmd.ui.dashboard.admin;
+package com.lucheses.mmmd.ui.registo;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.lucheses.mmmd.App;
 import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
-import com.lucheses.mmmd.entidades.MembroHumano;
+import com.lucheses.mmmd.entidades.Familia;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
@@ -22,47 +21,47 @@ import javafx.util.StringConverter;
  *
  * @author lucheses
  */
-public class EscolherMembroResponsavelUIController implements Initializable {
+public class EliminarFamiliaUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
     @FXML
-    private JFXComboBox<MembroHumano> seleccionarMembroCombo;
+    private JFXComboBox<Familia> seleccionarFamiliaCombo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.tornarArrastavel(contentArea);
-        seleccionarMembroCombo.setItems(FXCollections.observableArrayList(BaseDeDados.getPossiveisResponsaveis()));
-        seleccionarMembroCombo.setConverter(new StringConverter<MembroHumano>() {
+        seleccionarFamiliaCombo.setItems(FXCollections.observableArrayList(BaseDeDados.getTodasAsFamilias()));
+        seleccionarFamiliaCombo.setConverter(new StringConverter<Familia>() {
             @Override
-            public String toString(MembroHumano mh) {
-                return mh.getNome();
+            public String toString(Familia f) {
+                return f.getNome();
             }
 
             @Override
-            public MembroHumano fromString(String string) {
+            public Familia fromString(String string) {
                 return null;
             }
         });
-        seleccionarMembroCombo.valueProperty().addListener((obs, oldItem, newItem) -> {
-            Sessao.membroHumano = newItem;
+        seleccionarFamiliaCombo.valueProperty().addListener((obs, oldItem, newItem) -> {
+            Sessao.familia = newItem;
         });
     }
 
     @FXML
-    private void voltar(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/dashboard/admin/NovaFamiliaUI");
+    private void novaFamilia(MouseEvent event) throws IOException {
+        App.novaJanela("fxml/registo/NovaFamiliaUI");
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void verDados(MouseEvent event) throws IOException {
-        /*App.novaJanela("fxml/registo/VerFamiliaUI");*/
+        App.novaJanela("fxml/registo/VerFamiliaUI");
     }
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+        System.exit(0);
     }
 
     @FXML
@@ -71,15 +70,12 @@ public class EscolherMembroResponsavelUIController implements Initializable {
     }
 
     @FXML
-    private void porNaFamilia(MouseEvent event) throws IOException {
-        Sessao.familia.persistir();
-        Sessao.membroHumano.setResponsavel(true);
+    private void entrarNaFamilia(MouseEvent event) throws IOException {
+        Sessao.utilizador.setSet(true);
+        Sessao.utilizador.comitar();
         Sessao.membroHumano.setFamilia(Sessao.familia);
         Sessao.membroHumano.persistir();
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Familia criada com sucesso!");
-        alert.showAndWait();
+        App.novaJanela("fxml/DashboardUI");
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -76,6 +77,14 @@ public class FamiliaUIController implements Initializable {
     
     @FXML
     private void novoMembro(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/dashboard/familia/AdicionarMembroUI");
+        if (BaseDeDados.haUtilizadoresDisponiveis()) {
+            App.novaJanela("fxml/dashboard/admin/EscolherMembroUI");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("WARNING");
+            alert.setHeaderText("Não é possível criar família");
+            alert.setContentText("Não há membros disponíveis");
+            alert.showAndWait();
+        }
     }
 }

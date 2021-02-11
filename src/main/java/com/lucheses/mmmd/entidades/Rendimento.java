@@ -49,6 +49,18 @@ public class Rendimento extends Entidade {
         
     }
     
+    public double getValor() {
+        return this.valor;
+    }
+    
+    public String getOrigem() {
+        return this.origem;
+    }
+    
+    public Date getDataRendimento() {
+        return this.dataRendimento;
+    }
+    
     public Rendimento(Date dataRendimento, double valor, String origem, MembroHumano beneficiarioRendimento, PrevisaoMensal previsaoMensal) {
         this.dataRendimento = dataRendimento;
         this.valor = valor;

@@ -24,6 +24,6 @@
         <FontAwesomeIconView fx:id="minimizarBtn" glyphName="MINUS" layoutX="640.0" layoutY="30.0" onMouseClicked="#minimizarPrograma" size="2em" styleClass="closeBtn" />
       <JFXComboBox promptText="Seleccionar um membro" fx:id="seleccionarMembroCombo" layoutX="148.0" layoutY="183.0" prefHeight="26.0" prefWidth="367.0" />
       <JFXButton buttonType="RAISED" layoutX="533.0" layoutY="185.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verDados" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Ver dados" />
- <JFXButton onMouseClicked="#novoMembro" buttonType="RAISED" layoutX="533.0" layoutY="81.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../styles/novomembroui.css" text="Novo Membro" />  
+ <JFXButton onMouseClicked="#novoMembro" buttonType="RAISED" layoutX="533.0" layoutY="81.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Novo Membro" />  
     </children>
 </AnchorPane>

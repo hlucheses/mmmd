@@ -28,7 +28,6 @@ public class AnimaisUIController implements Initializable {
         if (!Sessao.membroHumano.eResponsavel()) {
             listaAnimaisLbl.setText("Esta família não tem animais!");
         }
-        
     }    
 
     @FXML

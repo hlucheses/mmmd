@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contentArea" prefHeight="491.0" prefWidth="558.0" style="-fx-background-color: #fff;" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.economia.VerPrevisoesUIController">
+    <children>
+        <FontAwesomeIconView glyphName="CLOSE" layoutX="526.0" layoutY="29.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+        <JFXComboBox fx:id="seleccionarPrevisaoCombo" layoutX="106.0" layoutY="138.0" prefHeight="26.0" prefWidth="318.0" promptText="Seleccionar Previsão" />
+        <Label fx:id="poupancaLbl" layoutX="239.0" layoutY="202.0" text="Poupança" textFill="#d62828">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="111.0" layoutY="203.0" text="Poupança" textFill="#003049">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="112.0" layoutY="258.0" text="Balanço Mensal" textFill="#003049">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="balancoMensalLbl" layoutX="243.0" layoutY="258.0" text="Balanço Mensal" textFill="#d62828">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="112.0" layoutY="285.0" text="Total de Gastos" textFill="#003049">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="totalGastosLbl" layoutX="243.0" layoutY="285.0" text="Total de Gastos" textFill="#d62828">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="totalRendimentosLbl" layoutX="287.0" layoutY="232.0" text="Total de Rendimentos" textFill="#d62828">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="111.0" layoutY="231.0" text="Total de Rendimentos" textFill="#003049">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+      <Pane style="-fx-background-color: #d62828" layoutY="387.0" prefHeight="137.0" prefWidth="558.0" />
+    </children>
+</AnchorPane>
