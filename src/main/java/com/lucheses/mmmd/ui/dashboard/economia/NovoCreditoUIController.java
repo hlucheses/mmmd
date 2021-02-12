@@ -2,10 +2,13 @@ package com.lucheses.mmmd.ui.dashboard.economia;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import com.lucheses.mmmd.App;
 import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Sessao;
+import com.lucheses.mmmd.entidades.Credito;
+import com.lucheses.mmmd.entidades.Dizimo;
+import com.lucheses.mmmd.entidades.Gasto;
 import com.lucheses.mmmd.entidades.MembroHumano;
+import com.lucheses.mmmd.entidades.PrevisaoMensal;
 import com.lucheses.mmmd.entidades.Rendimento;
 import java.net.URL;
 import java.time.LocalDate;
@@ -19,9 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
@@ -30,7 +32,7 @@ import javafx.util.StringConverter;
  *
  * @author lucheses
  */
-public class NovoRendimentoUIController implements Initializable {
+public class NovoCreditoUIController implements Initializable {
 
     @FXML
     private AnchorPane contentArea;
@@ -39,19 +41,20 @@ public class NovoRendimentoUIController implements Initializable {
     @FXML
     private JFXTextField valorTxt;
     @FXML
-    private JFXTextField origemTxt;
+    private JFXTextField designacaoTxt;
     @FXML
-    private JFXComboBox<MembroHumano> seleccionarBeneficiarioCombo;
-    private MembroHumano beneficiarioRendimento;
+    private JFXTextField localTxt;
+    @FXML
+    private JFXComboBox<MembroHumano> seleccionarAutorCombo;
+    private MembroHumano autorGasto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        App.tornarArrastavel(contentArea);
         valorTxt.setText("0");
 
-        seleccionarBeneficiarioCombo.setItems(FXCollections.observableArrayList(BaseDeDados.
+        seleccionarAutorCombo.setItems(FXCollections.observableArrayList(BaseDeDados.
                 getMembrosFamilia(Sessao.membroHumano.getFamilia())));
-        seleccionarBeneficiarioCombo.setConverter(new StringConverter<MembroHumano>() {
+        seleccionarAutorCombo.setConverter(new StringConverter<MembroHumano>() {
             @Override
             public String toString(MembroHumano f) {
                 return f.getNome();
@@ -62,8 +65,8 @@ public class NovoRendimentoUIController implements Initializable {
                 return null;
             }
         });
-        seleccionarBeneficiarioCombo.valueProperty().addListener((obs, oldItem, newItem) -> {
-            beneficiarioRendimento = newItem;
+        seleccionarAutorCombo.valueProperty().addListener((obs, oldItem, newItem) -> {
+            autorGasto = newItem;
         });
         valorTxt.textProperty()
                 .addListener(new ChangeListener<String>() {
@@ -80,8 +83,6 @@ public class NovoRendimentoUIController implements Initializable {
 
         dataDP.setValue(LocalDate.now());
     }
-    
-    
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
@@ -89,30 +90,29 @@ public class NovoRendimentoUIController implements Initializable {
     }
 
     @FXML
-    private void novoRendimento(MouseEvent event) {
-        String valor = valorTxt.getText();
-        String origem = origemTxt.getText();
+    private void novoGasto(MouseEvent event) {
+        String localGasto = localTxt.getText();
+        String designacao = designacaoTxt.getText();
+        double valorGasto = Double.parseDouble(valorTxt.getText());
+        Date dataFim = Date.from(dataDP.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        PrevisaoMensal pm = BaseDeDados.buscarUltimaPrevisao(Sessao.membroHumano.getFamilia());
 
-        if (origem.equals("") || beneficiarioRendimento == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Ayo");
-            alert.setHeaderText("Preencha todos os campos");
-            alert.showAndWait();
-        }
         
-        if (valor.equals("")) {
-            valor = "0";
-        } 
+        Credito c = new Credito(localGasto, designacao, valorGasto, dataFim, pm, autorGasto);
+        c.persistir();
+        new Rendimento(Date.from(LocalDate.now().atStartOfDay(ZoneId.
+                systemDefault()).toInstant()), valorGasto, "Crédito",
+                autorGasto, pm).persistir();
+        sucessoGasto();
+        
+        ((Node) (event.getSource())).getScene().getWindow().hide();
 
-        new Rendimento(Date.from(dataDP.getValue().
-                atStartOfDay(ZoneId.systemDefault()).toInstant()),
-                Double.parseDouble(valor),
-                origem, beneficiarioRendimento,
-                BaseDeDados.buscarUltimaPrevisao(Sessao.membroHumano.getFamilia())).persistir();
+    }
+
+    public static void sucessoGasto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Ayo");
-        alert.setHeaderText("Rendimento adicionado!");
+        alert.setHeaderText("Crédito efectuado!");
         alert.showAndWait();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

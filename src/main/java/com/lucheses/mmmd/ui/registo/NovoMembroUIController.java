@@ -67,6 +67,11 @@ public class NovoMembroUIController implements Initializable {
         if (Sessao.utilizador.eAdmin() && !BaseDeDados.verificarResponsaveis()) {
             voltarBtn.setVisible(false);
         }
+        
+        if (Sessao.acao.equals("FROM_ESCOLHER_MEMBRO")) {
+            voltarBtn.setVisible(true);
+            Sessao.acao = "DEFAULT";
+        }
 
         App.tornarArrastavel(contentArea);
         masculinoRBtn.setSelected(true);

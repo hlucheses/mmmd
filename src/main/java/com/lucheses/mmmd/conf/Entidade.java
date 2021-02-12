@@ -12,6 +12,10 @@ public abstract class Entidade implements Serializable {
         BaseDeDados.persistir(this);
     }
     
+    public void remover() {
+        BaseDeDados.remover(this);
+    }
+    
     public void comitar() {
         BaseDeDados.comitar();
     }

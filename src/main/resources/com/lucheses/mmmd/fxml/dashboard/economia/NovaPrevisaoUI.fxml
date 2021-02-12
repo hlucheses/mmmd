@@ -18,14 +18,15 @@
         </Label>
         <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
         <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
-        <JFXTextField fx:id="poupancaTxt" focusColor="#d62828" layoutX="271.0" layoutY="186.0" prefHeight="25.0" prefWidth="217.0" promptText="Poupança (AOA)">
+        <JFXTextField fx:id="poupancaTxt" focusColor="#d62828" layoutX="271.0" layoutY="186.0" prefHeight="30.0" prefWidth="264.0" promptText="Poupança (AOA)">
             <font>
                 <Font size="14.0" />
             </font>
         </JFXTextField>
-        <JFXButton onMouseClicked="#novaPrevisao" buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Nova Previsão" />
+        <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novaPrevisao" prefHeight="25.0" prefWidth="116.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Nova Previsão" />
         
         <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+      <Label layoutX="271.0" layoutY="169.0" text="Toda a previsão mensal inicia com uma poupança" textFill="#f77f00" />
 
     </children>
 </AnchorPane>

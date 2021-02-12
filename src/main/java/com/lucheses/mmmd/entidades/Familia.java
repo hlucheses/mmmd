@@ -75,6 +75,17 @@ public class Familia extends Entidade {
         this.nome = nome;
     }
     
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+    
+    public void setTelefone(String telefone) {
+        this.telefoneDeCasa = telefone;
+    }
+    
     public String getEndereco() {
         return this.endereco;
     }

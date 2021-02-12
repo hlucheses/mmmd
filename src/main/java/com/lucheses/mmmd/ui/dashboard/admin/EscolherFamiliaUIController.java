@@ -1,5 +1,6 @@
 package com.lucheses.mmmd.ui.dashboard.admin;
 
+import com.jfoenix.controls.JFXButton;
 import com.lucheses.mmmd.ui.registo.*;
 import com.jfoenix.controls.JFXComboBox;
 import com.lucheses.mmmd.App;
@@ -29,10 +30,21 @@ public class EscolherFamiliaUIController implements Initializable {
     private AnchorPane contentArea;
     @FXML
     private JFXComboBox<Familia> seleccionarFamiliaCombo;
+    @FXML
+    private JFXButton voltarBtn;
+    @FXML
+    private JFXButton entrarFamiliaBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         App.tornarArrastavel(contentArea);
+        
+        if (Sessao.acao.equals("VER_FAMILIA_ADMIN")) {
+            entrarFamiliaBtn.setVisible(false);
+            voltarBtn.setVisible(false);
+        }
+        
         seleccionarFamiliaCombo.setItems(FXCollections.observableArrayList(BaseDeDados.getTodasAsFamilias()));
         seleccionarFamiliaCombo.setConverter(new StringConverter<Familia>() {
             @Override
@@ -58,17 +70,24 @@ public class EscolherFamiliaUIController implements Initializable {
 
     @FXML
     private void voltar(MouseEvent event) throws IOException {
-        App.novaJanela("fxml/registo/NovoMembroUI");
+        if (Sessao.acao.equals("FROM_ESCOLHER_MEMBRO")) {
+            App.novaJanela("fxml/dashboard/admin/EscolherMembroUI");
+            Sessao.acao = "DEFAULT";
+        } else {
+            App.novaJanela("fxml/registo/NovoMembroUI");
+        }
+        
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void verDados(MouseEvent event) throws IOException {
-        //App.novaJanela("fxml/registo/VerFamiliaUI");
+        App.novaJanela("fxml/registo/VerFamiliaUI");
     }
 
     @FXML
     private void fecharPrograma(MouseEvent event) {
+        Sessao.acao = "DEFAULT";
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 

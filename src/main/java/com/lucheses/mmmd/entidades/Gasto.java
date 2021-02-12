@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,6 +18,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "gasto")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Gasto extends Entidade {
 
     @Id
@@ -43,6 +46,10 @@ public class Gasto extends Entidade {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "membro_idmembro", referencedColumnName = "idmembro")
     protected MembroHumano autorGasto;
+    
+    public String getNomeAutorGasto() {
+        return this.autorGasto.getNome();
+    }
 
     public Gasto() {
         
@@ -61,6 +68,10 @@ public class Gasto extends Entidade {
         return this.valor;
     }
     
+    public MembroHumano getAutorGasto() {
+        return this.autorGasto;
+    }
+    
     public String getDesignacao() {
         return this.designacao;
     }
@@ -71,5 +82,17 @@ public class Gasto extends Entidade {
     
     public Date getDataGasto() {
         return this.dataGasto;
+    }
+    
+    public PrevisaoMensal getPrevisao() {
+        return this.previsaoMensal;
+    }
+    
+    public void setDesignacao(String designacao) {
+        this.designacao = designacao;
+    }
+    
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

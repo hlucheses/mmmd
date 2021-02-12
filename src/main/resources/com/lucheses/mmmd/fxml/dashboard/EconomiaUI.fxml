@@ -16,11 +16,13 @@
         </Pane>
         <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
         <BorderPane layoutX="569.0" layoutY="403.0" prefHeight="66.0" prefWidth="270.0" />
-        <JFXButton onMouseClicked="#novoRendimento" buttonType="RAISED" layoutX="49.0" layoutY="205.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Rendimento" />
-      <JFXButton onMouseClicked="#novoGasto" buttonType="RAISED" layoutX="49.0" layoutY="117.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Gasto" />
-      <JFXButton onMouseClicked="#verGastos" buttonType="RAISED" layoutX="277.0" layoutY="117.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Gastos" />
-      <JFXButton onMouseClicked="#verRendimentos" buttonType="RAISED" layoutX="277.0" layoutY="205.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Rendimentos" />
-      <JFXButton onMouseClicked="#novaPrevisao" buttonType="RAISED" layoutX="49.0" layoutY="291.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Nova Previsão" />
-      <JFXButton onMouseClicked="#verPrevisoes" buttonType="RAISED" layoutX="277.0" layoutY="291.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Previsões" />
+        <JFXButton buttonType="RAISED" layoutX="49.0" layoutY="176.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoRendimento" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Rendimento" />
+      <JFXButton buttonType="RAISED" layoutX="49.0" layoutY="88.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoGasto" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Gasto" />
+      <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="88.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verGastos" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Gastos" />
+      <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="176.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verRendimentos" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Rendimentos" />
+      <JFXButton buttonType="RAISED" layoutX="49.0" layoutY="262.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novaPrevisao" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Nova Previsão" />
+      <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="262.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verPrevisoes" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Previsões" />
+      <JFXButton buttonType="RAISED" layoutX="49.0" layoutY="345.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#novoCredito" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Novo Crédito" />
+      <!--<JFXButton buttonType="RAISED" layoutX="277.0" layoutY="345.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#verCreditos" prefHeight="50.0" prefWidth="198.0" ripplerFill="#f77f00" styleClass="loginBtn" text="Ver Crédito" />-->
     </children>
 </AnchorPane>

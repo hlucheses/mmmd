@@ -5,6 +5,7 @@ import com.lucheses.mmmd.conf.Entidade;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class PrevisaoMensal extends Entidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idprevisao_mensal")
-    private long id;
+    private int id;
     
     @Temporal(TemporalType.DATE)
     @Column(name = "data_previsao")
@@ -38,10 +39,10 @@ public class PrevisaoMensal extends Entidade {
     @Column(name = "poupanca")
     private double poupanca;
      
-    @OneToMany(mappedBy = "previsaoMensal", fetch = FetchType.LAZY)
+    @OneToMany(orphanRemoval=true, mappedBy = "previsaoMensal", fetch = FetchType.LAZY)
     private List<Rendimento> rendimentoMensal;
     
-    @OneToMany(mappedBy = "previsaoMensal", fetch = FetchType.LAZY)
+    @OneToMany(orphanRemoval=true, mappedBy = "previsaoMensal", fetch = FetchType.LAZY)
     private List<Gasto> gastoMensal;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,6 +54,10 @@ public class PrevisaoMensal extends Entidade {
     
     public Date getDataPrevisao() {
         return this.dataPrevisao;
+    }
+    
+    public int getId() {
+        return this.id;
     }
     
     public double getPoupanca() {
@@ -71,18 +76,22 @@ public class PrevisaoMensal extends Entidade {
     
     public double calcularRendimentos() {
         double rendimentos = 0;
-        for (int i = 0; i < this.rendimentoMensal.size(); i++) {
-            rendimentos += this.rendimentoMensal.get(i).getValor();
+        if (rendimentoMensal != null) {
+            for (int i = 0; i < this.rendimentoMensal.size(); i++) {
+                rendimentos += this.rendimentoMensal.get(i).getValor();
+            }
         }
-        System.out.println(rendimentos);
         return rendimentos;
     }
     
     public double calcularGastos() {
         double gastos = 0;
-        for (int i = 0; i < this.gastoMensal.size(); i++) {
-            gastos += this.gastoMensal.get(i).getValor();
+        if (gastoMensal != null) {
+            for (int i = 0; i < this.gastoMensal.size(); i++) {
+                gastos += this.gastoMensal.get(i).getValor();
+            }
         }
+        
         System.out.println(gastos);
         return gastos;
     }

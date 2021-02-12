@@ -3,15 +3,13 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 
-<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.economia.VerGastosUIController">
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="439.0" prefWidth="870.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.economia.VerGastosUIController">
     <children>
         <Label layoutX="133.0" layoutY="31.0" text="Ver Gastos" textFill="#d62828">
             <font>
@@ -19,15 +17,18 @@
             </font>
         </Label>
         <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
-        <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
+        <Pane prefHeight="439.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
         
-        <FontAwesomeIconView glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
-      <TableView fx:id="gastosTbl" layoutX="143.0" layoutY="94.0" prefHeight="282.0" prefWidth="467.0">
+        <FontAwesomeIconView glyphName="CLOSE" layoutX="833.0" layoutY="28.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+      <TableView fx:id="gastosTbl" layoutX="122.0" layoutY="94.0" prefHeight="282.0" prefWidth="714.0">
         <columns>
           <TableColumn fx:id="designacaoCol" prefWidth="110.4000244140625" text="Designação" />
-          <TableColumn fx:id="valorCol" prefWidth="112.0" text="Valor" />
-            <TableColumn fx:id="localGastoCol" prefWidth="120.79998779296875" text="Local do Gasto" />
-            <TableColumn fx:id="dataGastoCol" prefWidth="122.39998168945311" text="Data do Gasto" />
+          <TableColumn fx:id="valorCol" prefWidth="90.4000244140625" text="Valor" />
+            <TableColumn fx:id="localGastoCol" prefWidth="108.79998779296875" text="Local do Gasto" />
+            <TableColumn fx:id="dataGastoCol" prefWidth="107.19998168945312" text="Data do Gasto" />
+            <TableColumn fx:id="autorGastoCol" prefWidth="147.2000732421875" text="Autor do Gasto" />
+            <TableColumn fx:id="eliminarCol" prefWidth="63.199951171875" text="Eliminar" />
+            <TableColumn fx:id="actualizarCol" prefWidth="84.00003662109373" text="Actualizar" />
         </columns>
       </TableView>
 

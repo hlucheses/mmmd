@@ -1,5 +1,6 @@
 package com.lucheses.mmmd.entidades;
 
+import com.lucheses.mmmd.conf.BaseDeDados;
 import com.lucheses.mmmd.conf.Entidade;
 import java.util.Date;
 import javax.persistence.Column;
@@ -39,15 +40,20 @@ public class Rendimento extends Entidade {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "previsao_mensal_idprevisao_mensal", referencedColumnName = "idprevisao_mensal")
-    protected PrevisaoMensal previsaoMensal;
+    private PrevisaoMensal previsaoMensal;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "membro_humano_idmembro", referencedColumnName = "idmembro")
-    protected MembroHumano beneficiarioRendimento;
+    private MembroHumano beneficiarioRendimento;
     
     public Rendimento() {
         
     }
+    
+    public String getNomeAutorRendimento() {
+        return this.beneficiarioRendimento.getNome();
+    }
+    
     
     public double getValor() {
         return this.valor;
@@ -67,5 +73,13 @@ public class Rendimento extends Entidade {
         this.origem = origem;
         this.beneficiarioRendimento = beneficiarioRendimento;
         this.previsaoMensal = previsaoMensal;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+    
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

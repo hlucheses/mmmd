@@ -1,11 +1,13 @@
 package com.lucheses.mmmd.conf;
 
+import com.lucheses.mmmd.entidades.Credito;
 import com.lucheses.mmmd.entidades.Familia;
 import com.lucheses.mmmd.entidades.Gasto;
 import com.lucheses.mmmd.entidades.MembroHumano;
 import com.lucheses.mmmd.entidades.PrevisaoMensal;
 import com.lucheses.mmmd.entidades.Rendimento;
 import com.lucheses.mmmd.entidades.Utilizador;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -22,16 +24,37 @@ import javax.persistence.TypedQuery;
  */
 public final class BaseDeDados {
 
-    private static final EntityManager EM;
-    private static final EntityManagerFactory EMF;
+    public static EntityManager EM;
+    public static EntityManagerFactory EMF;
 
     static {
+        comecar();
+    }
+
+    public static void comecar() {
         EMF = Persistence.createEntityManagerFactory("MyMoneyMyDecisionPU");
         EM = EMF.createEntityManager();
     }
-
+    
+    public static void reiniciar() {
+        EM.close();
+        comecar();
+    }
+    
     public static void comitar() {
         EM.getTransaction().begin();
+        EM.getTransaction().commit();
+    }
+
+    public static void remover(Object o) {
+        EM.getTransaction().begin();
+        EM.remove(o);
+        EM.getTransaction().commit();
+    }
+
+    public static void persistir(Object o) {
+        EM.getTransaction().begin();
+        EM.persist(o);
         EM.getTransaction().commit();
     }
 
@@ -44,7 +67,13 @@ public final class BaseDeDados {
     public static PrevisaoMensal buscarUltimaPrevisao(Familia f) {
         String sql = "SELECT pm FROM PrevisaoMensal pm WHERE pm.familia = :familia ORDER BY pm.dataPrevisao DESC";
         TypedQuery<PrevisaoMensal> query = EM.createQuery(sql, PrevisaoMensal.class);
-        return query.setParameter("familia", f).getSingleResult();
+        return query.setParameter("familia", f).setMaxResults(1).getSingleResult();
+    }
+
+    public static PrevisaoMensal getPrevisaoMensalById(int id) {
+        String sql = "SELECT pm FROM PrevisaoMensal pm WHERE pm.id = :id";
+        TypedQuery<PrevisaoMensal> query = EM.createQuery(sql, PrevisaoMensal.class);
+        return query.setParameter("id", id).setMaxResults(1).getSingleResult();
     }
 
     public static List<PrevisaoMensal> buscarPrevisoesFamilia(Familia f) {
@@ -62,19 +91,25 @@ public final class BaseDeDados {
         }
         sql = "SELECT pm FROM PrevisaoMensal pm WHERE pm.familia = :familia ORDER BY pm.dataPrevisao DESC";
         TypedQuery<PrevisaoMensal> query = EM.createQuery(sql, PrevisaoMensal.class);
-        PrevisaoMensal pm = query.setParameter("familia", f).getSingleResult();
-        return Date.from(pm.getDataPrevisao().toInstant().atZone(ZoneId.
-                systemDefault()).toLocalDate().plusMonths(1).atStartOfDay(
-                ZoneId.systemDefault()).toInstant());
+        PrevisaoMensal pm = query.setParameter("familia", f).setMaxResults(1).getSingleResult();
+        LocalDate dataNovaPrevisao = Instant.ofEpochMilli(pm.getDataPrevisao()
+                .getTime()).atZone(ZoneId.systemDefault()).toLocalDate().plusMonths(1);
+        return java.sql.Date.valueOf(dataNovaPrevisao);
+    }
+
+    public static boolean todosOsCreditosPagos(Familia familia) {
+        String sql = "SELECT COUNT(*) FROM Credito c WHERE c.autorGasto.familia = :familia AND c.valorTotal > c.valorPago";
+        TypedQuery<Long> query = EM.createQuery(sql, Long.class);
+        return query.setParameter("familia", familia).getSingleResult() <= 0;
+    }
+
+    public static Credito getCredito(Familia familia) {
+        String sql = "SELECT c FROM Credito c WHERE c.autorGasto.familia = :familia AND c.valorTotal > c.valorPago";
+        TypedQuery<Credito> query = EM.createQuery(sql, Credito.class);
+        return query.setParameter("familia", familia).getSingleResult();
     }
 
     private BaseDeDados() {
-    }
-
-    public static void persistir(Object o) {
-        EM.getTransaction().begin();
-        EM.persist(o);
-        EM.getTransaction().commit();
     }
 
     public static Query novoQuery(String sql) {
@@ -86,7 +121,7 @@ public final class BaseDeDados {
         TypedQuery<Utilizador> query = EM.createQuery(sql, Utilizador.class);
         return query.setParameter("username", username).getSingleResult();
     }
-    
+
     public static MembroHumano getMembroHumanoByUsername(String username) {
         String sql = "SELECT mh FROM MembroHumano mh WHERE mh.utilizador.username = :username";
         TypedQuery<MembroHumano> query = EM.createQuery(sql, MembroHumano.class);
@@ -156,9 +191,9 @@ public final class BaseDeDados {
         TypedQuery<Gasto> query = EM.createQuery(sql, Gasto.class);
         return query.setParameter("familia", f).getResultList();
     }
-    
+
     public static List<Rendimento> getRendimentosFamilia(Familia f) {
-        String sql = "SELECT r FROM Rendimento r WHERE r.benificiarioRendimento.familia = :familia";
+        String sql = "SELECT r FROM Rendimento r WHERE r.beneficiarioRendimento.familia = :familia";
         TypedQuery<Rendimento> query = EM.createQuery(sql, Rendimento.class);
         return query.setParameter("familia", f).getResultList();
     }

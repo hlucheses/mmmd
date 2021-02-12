@@ -66,6 +66,7 @@ public class EscolherMembroUIController implements Initializable {
 
     @FXML
     private void novoMembro(MouseEvent event) throws IOException {
+        Sessao.acao = "FROM_ESCOLHER_MEMBRO";
         App.novaJanela("fxml/registo/NovoMembroUI");
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
@@ -78,6 +79,7 @@ public class EscolherMembroUIController implements Initializable {
             alert.setHeaderText("Precisa de seleccionar um membro!");
             alert.showAndWait();
         } else if (Sessao.utilizador.eAdmin()) {
+            Sessao.acao = "FROM_ESCOLHER_MEMBRO";
             App.novaJanela("fxml/dashboard/admin/EscolherFamiliaUI");
             ((Node) (event.getSource())).getScene().getWindow().hide();
         } else {

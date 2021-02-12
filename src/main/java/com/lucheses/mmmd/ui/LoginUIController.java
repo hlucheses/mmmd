@@ -77,6 +77,8 @@ public class LoginUIController implements Initializable {
                     Sessao.membroHumano = BaseDeDados.getMembroHumanoByUsername(Sessao.utilizador.getUsername());
                 }
 
+                
+                
                 if (!Sessao.membroHumano.temFamilia()) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Aviso");
@@ -86,6 +88,11 @@ public class LoginUIController implements Initializable {
                             + "incluí-lo na sua família");
                     alert.showAndWait();
                 } else {
+                    
+                    if (BaseDeDados.haPrevisoesMensais(Sessao.membroHumano.getFamilia())) {
+                        Sessao.previsaoMensal = BaseDeDados.buscarUltimaPrevisao(Sessao.membroHumano.getFamilia());
+                    }
+                    
                     Sessao.familia = Sessao.membroHumano.getFamilia();
                     App.novaJanela("fxml/DashboardUI");
                     ((Node) (event.getSource())).getScene().getWindow().hide();

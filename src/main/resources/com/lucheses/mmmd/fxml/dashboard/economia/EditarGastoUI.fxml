@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="contentArea" prefHeight="417.0" prefWidth="700.0" style="-fx-background-color: #ffffff" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucheses.mmmd.ui.dashboard.economia.EditarGastoUIController">
+    <children>
+        
+        <Label layoutX="133.0" layoutY="31.0" text="Editar Rendimento" textFill="#d62828">
+            <font>
+                <Font name="Impact" size="24.0" />
+            </font>
+        </Label>
+        <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
+        <Pane prefHeight="417.0" prefWidth="110.0" style="-fx-background-color: #d62828" />
+     
+        <JFXTextField fx:id="designacaoTxt" focusColor="#d62828" layoutX="224.0" layoutY="159.0" prefHeight="25.0" prefWidth="217.0" promptText="Designação">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </JFXTextField>
+        <JFXTextField fx:id="valorTxt" focusColor="#d62828" layoutX="224.0" layoutY="213.0" prefHeight="25.0" prefWidth="217.0" promptText="Valor">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </JFXTextField>
+        
+        <FontAwesomeIconView fx:id="closeBtn" glyphName="CLOSE" layoutX="665" layoutY="30.0" onMouseClicked="#fecharPrograma" size="2.2em" styleClass="closeBtn" wrappingWidth="15.0" />
+      <JFXButton buttonType="RAISED" layoutX="452.0" layoutY="161.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudarDesignacao" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Mudar origem" />
+      <JFXButton buttonType="RAISED" layoutX="452.0" layoutY="215.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mudarValor" prefHeight="26.0" prefWidth="110.0" ripplerFill="#f77f00" styleClass="loginBtn" stylesheets="@../../../styles/novomembroui.css" text="Mudar valor" />
+
+    </children>
+</AnchorPane>
